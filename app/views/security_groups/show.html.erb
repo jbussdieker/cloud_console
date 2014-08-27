@@ -2,8 +2,19 @@
 
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
-  <%= region(@region) %> /
+  <%= region_link(@region) %> /
   <%= link_to "security groups", region_security_groups_path(@region) %> /
-  <%= link_to @security_group, region_security_group_path(@region, @security_group) %>
+  <%= link_to @security_group.id, region_security_group_path(@region, @security_group) %>
 </div>
 
+<p>
+  <b>vpc_id: </b><%= @security_group.vpc_id %>
+</p>
+
+<p>
+  <b>group_name: </b><%= @security_group.group_name %>
+</p>
+
+<p>
+  <b>group_description: </b><%= @security_group.group_description %>
+</p>
