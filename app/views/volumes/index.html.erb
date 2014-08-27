@@ -1,0 +1,30 @@
+<h2>Volumes</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "volumes", region_volumes_path(@region) %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>volume_id</th>
+      <th>size</th>
+      <th>status</th>
+      <th>availability_zone</th>
+      <th>tag_set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @volumes.each do |volume| %>
+      <tr>
+        <td><%= link_to volume.volume_id, region_volume_path(@region, volume) %></td>
+        <td><%= volume.size %></td>
+        <td><%= volume.status %></td>
+        <td><%= volume.availability_zone %></td>
+        <td><%= volume.tag_set %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

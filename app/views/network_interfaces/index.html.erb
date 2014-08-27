@@ -1,0 +1,36 @@
+<h2>Network Interfaces</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region(@region) %> /
+  <%= link_to "network interfaces", region_network_interfaces_path(@region) %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>network_interface_id</th>
+      <th>vpc_id</th>
+      <th>subnet_id</th>
+      <th>mac_address</th>
+      <th>availability_zone</th>
+      <th>source_dest_check</th>
+      <th>status</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @network_interfaces.each do |network_interface| %>
+      <tr>
+        <td><%= link_to network_interface.network_interface_id, region_network_interface_path(@region, network_interface) %></td>
+        <td><%= link_to network_interface.vpc_id, region_vpc_path(@region, network_interface.vpc_id) %></td>
+        <td><%= link_to network_interface.subnet_id, region_subnet_path(@region, network_interface.subnet_id) %></td>
+        <td><%= network_interface.mac_address %></td>
+        <td><%= network_interface.availability_zone %></td>
+        <td><%= network_interface.source_dest_check %></td>
+        <td><%= network_interface.status %></td>
+        <td><%= network_interface.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

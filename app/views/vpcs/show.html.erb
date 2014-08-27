@@ -1,0 +1,36 @@
+<h2>VPC</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "vpcs", region_vpcs_path(@region) %> /
+  <%= link_to @vpc.id, region_vpc_path(@region, @vpc) %>
+</div>
+
+<p>
+  <b>vpc_id: </b><%= @vpc.vpc_id %>
+</p>
+
+<p>
+  <b>cidr_block: </b><%= @vpc.cidr_block %>
+</p>
+
+<p>
+  <b>dhcp_options_id: </b><%= @vpc.dhcp_options_id %>
+</p>
+
+<p>
+  <b>instance_tenancy: </b><%= @vpc.instance_tenancy %>
+</p>
+
+<p>
+  <b>is_default: </b><%= @vpc.is_default %>
+</p>
+
+<p>
+  <b>state: </b><%= @vpc.state %>
+</p>
+
+<p>
+  <b>tag_set: </b><%= @vpc.tag_set %>
+</p>

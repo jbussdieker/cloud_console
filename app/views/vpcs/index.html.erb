@@ -1,0 +1,28 @@
+<h2>VPCs</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "vpcs", region_vpcs_path(@region) %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>vpc_id</th>
+      <th>cidr_block</th>
+      <th>state</th>
+      <th>tag_set</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vpcs.each do |vpc| %>
+      <tr>
+        <td><%= link_to vpc.vpc_id, region_vpc_path(@region, vpc) %></td>
+        <td><%= vpc.cidr_block %></td>
+        <td><%= vpc.state %></td>
+        <td><%= vpc.tag_set %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

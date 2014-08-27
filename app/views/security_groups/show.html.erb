@@ -1,0 +1,9 @@
+<h2>Security Groups</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region(@region) %> /
+  <%= link_to "security groups", region_security_groups_path(@region) %> /
+  <%= link_to @security_group, region_security_group_path(@region, @security_group) %>
+</div>
+

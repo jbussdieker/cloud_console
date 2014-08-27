@@ -1,0 +1,44 @@
+<h2>Subnets</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "subnets", region_subnets_path(@region) %> /
+  <%= link_to @subnet.id, region_subnet_path(@region, @subnet) %>
+</div>
+
+<p>
+  <b>subnet_id: </b><%= @subnet.subnet_id %>
+</p>
+
+<p>
+  <b>vpc_id: </b><%= link_to @subnet.vpc_id, region_vpc_path(@region, @subnet.vpc_id) %>
+</p>
+
+<p>
+  <b>state: </b><%= @subnet.state %>
+</p>
+
+<p>
+  <b>cidr_block: </b><%= @subnet.cidr_block %>
+</p>
+
+<p>
+  <b>available_ip_address_count: </b><%= @subnet.available_ip_address_count %>
+</p>
+
+<p>
+  <b>default_for_az: </b><%= @subnet.default_for_az %>
+</p>
+
+<p>
+  <b>map_public_ip_on_launch: </b><%= @subnet.map_public_ip_on_launch %>
+</p>
+
+<p>
+  <b>availability_zone: </b><%= @subnet.availability_zone %>
+</p>
+
+<p>
+  <b>tag_set: </b><%= @subnet.tag_set %>
+</p>

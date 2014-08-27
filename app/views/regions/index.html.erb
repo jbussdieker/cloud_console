@@ -1,0 +1,11 @@
+<h2>Regions</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %>
+</div>
+
+<ul>
+<% @regions.each do |region| %>
+  <li><%= region_link(region) %></li>
+<% end %>
+</ul>

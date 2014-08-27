@@ -1,0 +1,24 @@
+<h2>Volumes</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "volumes", region_volumes_path(@region) %> /
+  <%= link_to @volume.id, region_volume_path(@region, @volume) %>
+</div>
+
+<p>
+  <b>size: </b><%= @volume.size %></td>
+</p>
+
+<p>
+  <b>status: </b><%= @volume.status %></td>
+</p>
+
+<p>
+  <b>availability_zone: </b><%= @volume.availability_zone %></td>
+</p>
+
+<p>
+  <b>tag_set: </b><%= @volume.tag_set %></td>
+</p>
