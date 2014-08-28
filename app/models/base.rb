@@ -10,7 +10,7 @@ class Base
   end
 
   def self.all(params = { region: "us-east-1" })
-    Rails.cache.fetch("#{params[:region]}_#{name.underscore.pluralize}", expires: 1.minute) do
+    Rails.cache.fetch(name.underscore.pluralize, namespace: params[:region], expires_in: 1.minute) do
       describe(params)
     end
   end
