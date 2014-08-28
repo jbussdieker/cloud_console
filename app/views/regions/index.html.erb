@@ -4,7 +4,7 @@
   <%= link_to "regions", regions_path %>
 </div>
 
-<ul>
+<ul id="regions">
 <% @regions.each do |region| %>
   <li><%= region_link(region) %></li>
 <% end %>
