@@ -7,40 +7,37 @@
   <%= vpc_link(@region, @vpc) %>
 </div>
 
-<p>
-  <b>state: </b><%= vpc_state(@vpc.state) %>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>cidr_block: </b><%= @vpc.cidr_block %>
-</p>
+<dl class="dl-horizontal">
+    <dt>state:</dt>
+    <dd><%= vpc_state(@vpc.state) %></dd>
 
-<p>
-  <b>dhcp_options_id: </b><%= @vpc.dhcp_options_id %>
-</p>
+    <dt>cidr_block:</dt>
+    <dd><%= @vpc.cidr_block %></dd>
 
-<p>
-  <b>instance_tenancy: </b><%= @vpc.instance_tenancy %>
-</p>
+    <dt>dhcp_options_id:</dt>
+    <dd><%= @vpc.dhcp_options_id %></dd>
 
-<p>
-  <b>is_default: </b><%= @vpc.is_default %>
-</p>
+    <dt>instance_tenancy:</dt>
+    <dd><%= @vpc.instance_tenancy %></dd>
 
-<p>
-  <b>subnets: </b>
-  <ul>
-    <% @vpc.subnets.sort.each do |subnet| %>
-      <li><%= subnet_link(@region, subnet) %></li>
-    <% end %>
-  </ul>
-</p>
+    <dt>is_default:</dt>
+    <dd><%= @vpc.is_default %></dd>
+</dl>
 
-<p>
-  <b>security groups: </b>
-  <ul>
-    <% @vpc.groups.sort.each do |group| %>
-      <li><%= security_group_link(@region, group) %></li>
-    <% end %>
-  </ul>
-</p>
+<h4>Subnets</h4>
+
+<ul>
+  <% @vpc.subnets.sort.each do |subnet| %>
+    <li><%= subnet_link(@region, subnet) %></li>
+  <% end %>
+</ul>
+
+<h4>Security Groups</h4>
+
+<ul>
+  <% @vpc.groups.sort.each do |group| %>
+    <li><%= security_group_link(@region, group) %></li>
+  <% end %>
+</ul>

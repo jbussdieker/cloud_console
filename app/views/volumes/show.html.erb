@@ -7,14 +7,15 @@
   <%= volume_link(@region, @volume) %>
 </div>
 
-<p>
-  <b>availability_zone: </b><%= @volume.availability_zone %></td>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>status: </b><%= volume_status(@volume.status) %></td>
-</p>
+<dl class="dl-horizontal">
+  <dt>status:</dt>
+  <dd><%= volume_status(@volume.status) %></dd>
 
-<p>
-  <b>size: </b><%= @volume.size %></td>
-</p>
+  <dt>availability_zone:</dt>
+  <dd><%= @volume.availability_zone %></dd>
+
+  <dt>size:</dt>
+  <dd><%= @volume.size %></dd>
+</dl>

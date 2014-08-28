@@ -7,14 +7,15 @@
   <%= security_group_link(@region, @security_group) %>
 </div>
 
-<p>
-  <b>vpc: </b><%= vpc_link(@region, @security_group.vpc) %>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>group_name: </b><%= @security_group.group_name %>
-</p>
+<dl class="dl-horizontal">
+  <dt>vpc:</dt>
+  <dd><%= vpc_link(@region, @security_group.vpc) %></dd>
 
-<p>
-  <b>group_description: </b><%= @security_group.group_description %>
-</p>
+  <dt>group_name:</dt>
+  <dd><%= @security_group.group_name %></dd>
+
+  <dt>group_description:</dt>
+  <dd><%= @security_group.group_description %></dd>
+</dl>

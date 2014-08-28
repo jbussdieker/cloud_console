@@ -7,30 +7,27 @@
   <%= subnet_link(@region, @subnet) %>
 </div>
 
-<p>
-  <b>vpc: </b><%= vpc_link(@region, @subnet.vpc) %>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>state: </b><%= subnet_state(@subnet.state) %>
-</p>
+<dl class="dl-horizontal">
+  <dt>state:</dt>
+  <dd><%= subnet_state(@subnet.state) %></dd>
 
-<p>
-  <b>cidr_block: </b><%= @subnet.cidr_block %>
-</p>
+  <dt>vpc:</dt>
+  <dd><%= vpc_link(@region, @subnet.vpc) %></dd>
 
-<p>
-  <b>availability_zone: </b><%= @subnet.availability_zone %>
-</p>
+  <dt>cidr block:</dt>
+  <dd><%= @subnet.cidr_block %></dd>
 
-<p>
-  <b>available_ip_address_count: </b><%= @subnet.available_ip_address_count %>
-</p>
+  <dt>availability_zone:</dt>
+  <dd><%= @subnet.availability_zone %></dd>
 
-<p>
-  <b>default_for_az: </b><%= @subnet.default_for_az %>
-</p>
+  <dt>available_ip_addresss_count:</dt>
+  <dd><%= @subnet.available_ip_address_count %></dd>
 
-<p>
-  <b>map_public_ip_on_launch: </b><%= @subnet.map_public_ip_on_launch %>
-</p>
+  <dt>default_for_az:</dt>
+  <dd><%= @subnet.default_for_az %></dd>
+
+  <dt>map_public_ip_on_launch:</dt>
+  <dd><%= @subnet.map_public_ip_on_launch %></dd>
+</dl>

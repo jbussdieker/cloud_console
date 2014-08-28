@@ -7,18 +7,15 @@
   <%= image_link(@region, @image.id) %>
 </div>
 
-<p>
-  <b>name: </b><%= @image.name %>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>description: </b><%= @image.description %>
-</p>
+<dl class="dl-horizontal">
+  <dt>state:</dt>
+  <dd><%= image_state(@image.image_state) %></dd>
 
-<p>
-  <b>image_state: </b><%= @image.image_state %>
-</p>
+  <dt>name:</dt>
+  <dd><%= @image.name %></dd>
 
-<p>
-  <b>tag_set: </b><%= @image.tag_set %>
-</p>
+  <dt>description:</dt>
+  <dd><%= @image.description %></dd>
+</dl>

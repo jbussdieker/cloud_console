@@ -7,30 +7,27 @@
   <%= address_link(@region, @address.public_ip) %>
 </div>
 
-<p>
-  <b>domain: </b><%= @address.domain %>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>allocation_id: </b><%= @address.allocation_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt>domain:</dt>
+  <dd><%= @address.domain %></dd>
 
-<p>
-  <b>instance: </b><%= instance_link @region, @address.instance %>
-</p>
+  <dt>allocation_id:</dt>
+  <dd><%= @address.allocation_id %></dd>
 
-<p>
-  <b>association_id: </b><%= @address.association_id %>
-</p>
+  <dt>instance:</dt>
+  <dd><%= instance_link @region, @address.instance %></dd>
 
-<p>
-  <b>network_interface_id: </b><%= network_interface_link @region, @address.network_interface_id %>
-</p>
+  <dt>association_id:</dt>
+  <dd><%= @address.association_id %></dd>
 
-<p>
-  <b>network_interface_owner_id: </b><%= @address.network_interface_owner_id %>
-</p>
+  <dt>network_interface_id:</dt>
+  <dd><%= network_interface_link @region, @address.network_interface_id %></dd>
 
-<p>
-  <b>private_ip_address: </b><%= @address.private_ip_address %>
-</p>
+  <dt>network_interface_owner_id:</dt>
+  <dd><%= @address.network_interface_owner_id %></dd>
+
+  <dt>private_ip_address:</dt>
+  <dd><%= @address.private_ip_address %></dd>
+</dl>

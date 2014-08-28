@@ -7,65 +7,56 @@
   <%= instance_link(@region, @instance) %>
 </div>
 
-<p>
-  <b>state: </b><%= instance_state(@instance.instance_state) %>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>type: </b><%= @instance.instance_type %>
-</p>
+<dl class="dl-horizontal">
+  <dt>state:</dt>
+  <dd><%= instance_state(@instance.instance_state) %></dd>
 
-<p>
-  <b>private_dns_name: </b><%= @instance.private_dns_name %>
-</p>
+  <dt>type:</dt>
+  <dd><%= @instance.instance_type %></dd>
 
-<p>
-  <b>dns_name: </b><%= @instance.dns_name %>
-</p>
+  <dt>private_dns_name:</dt>
+  <dd><%= @instance.private_dns_name %></dd>
 
-<p>
-  <b>vpc: </b><%= vpc_link(@region, @instance.vpc) %>
-</p>
+  <dt>dns_name:</dt>
+  <dd><%= @instance.dns_name %></dd>
 
-<p>
-  <b>subnet: </b><%= subnet_link(@region, @instance.subnet) %>
-</p>
+  <dt>vpc:</dt>
+  <dd><%= vpc_link(@region, @instance.vpc) %></dd>
 
-<p>
-  <b>image_id: </b><%= image_link(@region, @instance.image_id) %>
-</p>
+  <dt>subnet:</dt>
+  <dd><%= subnet_link(@region, @instance.subnet) %></dd>
 
-<p>
-  <b>groups: </b>
+  <dt>image:</dt>
+  <dd><%= image_link(@region, @instance.image_id) %></dd>
 
-  <ul>
-    <% @instance.groups.each do |group| %>
-      <li><%= security_group_link(@region, group) %></li>
+  <dt>groups:</dt>
+  <dd>
+    <%= @instance.groups.sort.collect do |group|
+      security_group_link(@region, group)
+    end.join(" / ").html_safe %>
+  </dd>
+</dl>
+
+<h4>Volumes</h4>
+
+<ul>
+  <% @instance.volumes.each do |volume| %>
+    <li><%= volume_link(@region, volume) %></li>
+  <% end %>
+</ul>
+
+<h4>Network Interfaces</h4>
+
+<ul>
+  <% @instance.network_interfaces.sort_by {|ni| ni.attachment[:device_index] }.each do |network_interface| %>
+    <li>eth<%= network_interface.attachment[:device_index] %> (<%= network_interface_link(@region, network_interface) %>)
+    <ul>
+    <% network_interface.private_ip_addresses_set.each do |address| %>
+      <li><%= address[:private_ip_address] %> <%= address_link(@region, (address[:association] || {})[:public_ip]) %></li>
     <% end %>
-  </ul>
-<p>
-
-<p>
-  <b>volumes: </b>
-
-  <ul>
-    <% @instance.volumes.each do |volume| %>
-      <li><%= volume_link(@region, volume) %></li>
-    <% end %>
-  </ul>
-<p>
-
-<p>
-  <b>network_interfaces: </b>
-  <ul>
-    <% @instance.network_interfaces.sort_by {|ni| ni.attachment[:device_index] }.each do |network_interface| %>
-      <li>eth<%= network_interface.attachment[:device_index] %> (<%= network_interface_link(@region, network_interface) %>)
-      <ul>
-      <% network_interface.private_ip_addresses_set.each do |address| %>
-        <li><%= address[:private_ip_address] %> <%= address_link(@region, (address[:association] || {})[:public_ip]) %></li>
-      <% end %>
-      </ul>
-      </li>
-    <% end %>
-  </ul>
-<p>
+    </ul>
+    </li>
+  <% end %>
+</ul>

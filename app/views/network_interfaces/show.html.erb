@@ -7,34 +7,30 @@
   <%= network_interface_link(@region, @network_interface.id) %>
 </div>
 
-<p>
-  <b>vpc: </b><%= vpc_link(@region, @network_interface.vpc) %>
-</p>
+<h4>Details</h4>
 
-<p>
-  <b>subnet: </b><%= subnet_link(@region, @network_interface.subnet) %>
-</p>
+<dl class="dl-horizontal">
+  <dt>vpc: </dt>
+  <dd><%= vpc_link(@region, @network_interface.vpc) %></dd>
 
-<p>
-  <b>instance: </b><%= instance_link(@region, @network_interface.instance) %>
-</p>
+  <dt>subnet: </dt>
+  <dd><%= subnet_link(@region, @network_interface.subnet) %></dd>
 
-<p>
-  <b>mac_address: </b><%= @network_interface.mac_address %>
-</p>
+  <dt>instance: </dt>
+  <dd><%= instance_link(@region, @network_interface.instance) %></dd>
 
-<p>
-  <b>availability_zone: </b><%= @network_interface.availability_zone %>
-</p>
+  <dt>mac_address: </dt>
+  <dd><%= @network_interface.mac_address %></dd>
 
-<p>
-  <b>source_dest_check: </b><%= @network_interface.source_dest_check %>
-</p>
+  <dt>availability_zone: </dt>
+  <dd><%= @network_interface.availability_zone %></dd>
 
-<p>
-  <b>status: </b><%= @network_interface.status %>
-</p>
+  <dt>source_dest_check: </dt>
+  <dd><%= @network_interface.source_dest_check %></dd>
 
-<p>
-  <b>description: </b><%= @network_interface.description %>
-</p>
+  <dt>status: </dt>
+  <dd><%= @network_interface.status %></dd>
+
+  <dt>description: </dt>
+  <dd><%= @network_interface.description %></dd>
+</dl>
