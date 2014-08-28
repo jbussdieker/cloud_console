@@ -10,7 +10,6 @@ describe "addresses" do
           it "shows address" do
             visit region_address_path(region, region.addresses.first)
             expect(page).to have_content 'Addresses'
-            expect(page.all("table#addresses tbody tr").count).to eql(count)
           end
         end
       end
