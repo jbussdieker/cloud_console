@@ -1,4 +1,4 @@
-class NetworkInterfacesController < ApplicationController
+class NetworkInterfacesController < AwsController
   before_filter :set_region
   before_filter :set_network_interface, only: [:show]
 

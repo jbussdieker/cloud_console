@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class AddressesController < AwsController
   before_filter :set_region
   before_filter :set_address, only: [:show]
 

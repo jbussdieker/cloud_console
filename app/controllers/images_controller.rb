@@ -1,4 +1,4 @@
-class ImagesController < ApplicationController
+class ImagesController < AwsController
   before_filter :set_region
   before_filter :set_image, only: [:show]
 

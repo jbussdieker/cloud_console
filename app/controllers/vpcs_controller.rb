@@ -1,4 +1,4 @@
-class VpcsController < ApplicationController
+class VpcsController < AwsController
   before_filter :set_region
   before_filter :set_vpc, only: [:show]
 

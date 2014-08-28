@@ -1,4 +1,4 @@
-class InstancesController < ApplicationController
+class InstancesController < AwsController
   before_filter :set_region
   before_filter :set_instance, only: [:show]
 

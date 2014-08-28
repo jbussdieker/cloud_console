@@ -1,4 +1,4 @@
-class SecurityGroupsController < ApplicationController
+class SecurityGroupsController < AwsController
   before_filter :set_region
   before_filter :set_security_group, only: [:show]
 

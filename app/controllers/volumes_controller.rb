@@ -1,4 +1,4 @@
-class VolumesController < ApplicationController
+class VolumesController < AwsController
   before_filter :set_region
   before_filter :set_volume, only: [:show]
 

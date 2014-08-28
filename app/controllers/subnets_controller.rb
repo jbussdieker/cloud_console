@@ -1,4 +1,4 @@
-class SubnetsController < ApplicationController
+class SubnetsController < AwsController
   before_filter :set_region
   before_filter :set_subnet, only: [:show]
 
