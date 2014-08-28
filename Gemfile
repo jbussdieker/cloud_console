@@ -44,5 +44,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
+
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'aws-sdk'
