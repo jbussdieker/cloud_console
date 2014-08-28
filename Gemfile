@@ -45,3 +45,4 @@ end
 gem 'capybara', group: :test
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'aws-sdk'
+gem 'devise'
