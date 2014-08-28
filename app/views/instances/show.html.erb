@@ -66,7 +66,16 @@
     <li>eth<%= network_interface.attachment[:device_index] %> (<%= network_interface_link(@region, network_interface) %>)
     <ul>
     <% network_interface.private_ip_addresses_set.each do |address| %>
-      <li><%= address[:private_ip_address] %> <%= address_link(@region, (address[:association] || {})[:public_ip]) %></li>
+      <li>
+        <%= address[:private_ip_address] %>
+        <% if address[:association] %>
+          <% if address[:association][:ip_owner_id] != "amazon" %>
+            (<%= address_link(@region, address[:association][:public_ip]) %>)
+          <% else %>
+            (<%= address[:association][:public_ip] %>)
+          <% end %>
+        <% end %>
+      </li>
     <% end %>
     </ul>
     </li>
