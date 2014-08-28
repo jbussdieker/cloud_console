@@ -15,19 +15,17 @@
       <th>vpc_id</th>
       <th>subnet_id</th>
       <th>instance_state</th>
-      <th>reservation_id</th>
     </tr>
   </thead>
   <tbody>
     <% @instances.each do |instance| %>
       <tr>
-        <td><%= instance.instance_id %></td>
-        <td><%= instance.image_id %></td>
+        <td><%= instance_link(@region, instance.instance_id) %></td>
+        <td><%= image_link(@region, instance.image_id) %></td>
         <td><%= instance.instance_type %></td>
-        <td><%= link_to instance.vpc_id, region_vpc_path(@region, instance.vpc_id) %></td>
-        <td><%= link_to instance.subnet_id, region_subnet_path(@region, instance.subnet_id) %></td>
+        <td><%= vpc_link(@region, instance.vpc_id) %></td>
+        <td><%= subnet_link(@region, instance.subnet_id) %></td>
         <td><%= instance.instance_state %></td>
-        <td><%= instance.reservation_id %></td>
       </tr>
     <% end %>
   </tbody>

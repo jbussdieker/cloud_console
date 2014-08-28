@@ -4,12 +4,8 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "vpcs", region_vpcs_path(@region) %> /
-  <%= link_to @vpc.id, region_vpc_path(@region, @vpc) %>
+  <%= vpc_link(@region, @vpc.id) %>
 </div>
-
-<p>
-  <b>vpc_id: </b><%= @vpc.vpc_id %>
-</p>
 
 <p>
   <b>cidr_block: </b><%= @vpc.cidr_block %>

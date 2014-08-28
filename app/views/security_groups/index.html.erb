@@ -18,8 +18,8 @@
   <tbody>
     <% @security_groups.each do |security_group| %>
       <tr>
-        <td><%= link_to security_group.group_id, region_security_group_path(@region, security_group) %></td>
-        <td><%= security_group.vpc_id %></td>
+        <td><%= security_group_link @region, security_group.group_id %></td>
+        <td><%= vpc_link(@region, security_group.vpc_id) %></td>
         <td><%= security_group.group_name %></td>
         <td><%= security_group.group_description %></td>
       </tr>

@@ -1,0 +1,36 @@
+<h2>Addresses</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "addresses", region_addresses_path(@region) %> /
+  <%= address_link(@region, @address.public_ip) %>
+</div>
+
+<p>
+  <b>domain: </b><%= @address.domain %>
+</p>
+
+<p>
+  <b>allocation_id: </b><%= @address.allocation_id %>
+</p>
+
+<p>
+  <b>instance_id: </b><%= instance_link @region, @address.instance_id %>
+</p>
+
+<p>
+  <b>association_id: </b><%= @address.association_id %>
+</p>
+
+<p>
+  <b>network_interface_id: </b><%= network_interface_link @region, @address.network_interface_id %>
+</p>
+
+<p>
+  <b>network_interface_owner_id: </b><%= @address.network_interface_owner_id %>
+</p>
+
+<p>
+  <b>private_ip_address: </b><%= @address.private_ip_address %>
+</p>

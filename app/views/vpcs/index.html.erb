@@ -18,7 +18,7 @@
   <tbody>
     <% @vpcs.each do |vpc| %>
       <tr>
-        <td><%= link_to vpc.vpc_id, region_vpc_path(@region, vpc) %></td>
+        <td><%= vpc_link(@region.id, vpc.vpc_id) %></td>
         <td><%= vpc.cidr_block %></td>
         <td><%= vpc.state %></td>
         <td><%= vpc.tag_set %></td>

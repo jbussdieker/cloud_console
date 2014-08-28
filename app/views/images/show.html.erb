@@ -1,0 +1,24 @@
+<h2>Images</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "images", region_images_path(@region) %> /
+  <%= image_link(@region, @image.id) %>
+</div>
+
+<p>
+  <b>name: </b><%= @image.name %>
+</p>
+
+<p>
+  <b>description: </b><%= @image.description %>
+</p>
+
+<p>
+  <b>image_state: </b><%= @image.image_state %>
+</p>
+
+<p>
+  <b>tag_set: </b><%= @image.tag_set %>
+</p>

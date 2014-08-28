@@ -4,11 +4,11 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "security groups", region_security_groups_path(@region) %> /
-  <%= link_to @security_group.id, region_security_group_path(@region, @security_group) %>
+  <%= security_group_link(@region, @security_group.id) %>
 </div>
 
 <p>
-  <b>vpc_id: </b><%= @security_group.vpc_id %>
+  <b>vpc_id: </b><%= vpc_link(@region, @security_group.vpc_id) %>
 </p>
 
 <p>

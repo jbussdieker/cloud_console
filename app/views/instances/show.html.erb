@@ -1,0 +1,65 @@
+<h2>Instances</h2>
+
+<div class="breadcrumb">
+  <%= link_to "regions", regions_path %> /
+  <%= region_link(@region) %> /
+  <%= link_to "instances", region_instances_path(@region) %> /
+  <%= instance_link(@region, @instance.id) %>
+</div>
+
+<p>
+  <b>instance_type: </b><%= @instance.instance_type %>
+</p>
+
+<p>
+  <b>private_dns_name: </b><%= @instance.private_dns_name %>
+</p>
+
+<p>
+  <b>dns_name: </b><%= @instance.dns_name %>
+</p>
+
+<p>
+  <b>vpc_id: </b><%= vpc_link(@region, @instance.vpc_id) %>
+</p>
+
+<p>
+  <b>subnet_id: </b><%= subnet_link(@region, @instance.subnet_id) %>
+</p>
+
+<p>
+  <b>image_id: </b><%= image_link(@region, @instance.image_id) %>
+</p>
+
+<p>
+  <b>groups: </b>
+<ul>
+<% @instance.group_set.each do |group| %>
+  <li><%= security_group_link(@region, group[:group_id]) %></li>
+<% end %>
+</ul>
+<p>
+
+<p>
+  <b>volumes: </b>
+<ul>
+<% @instance.block_device_mapping.each do |mapping| %>
+  <li><%= volume_link(@region, (mapping[:ebs] || {})[:volume_id]) %></li>
+<% end %>
+</ul>
+<p>
+
+<p>
+  <b>network_interfaces: </b>
+<ul>
+<% @instance.network_interface_set.sort_by {|s| s[:attachment][:device_index] }.each do |network_interface| %>
+  <li><b>eth<%= network_interface[:attachment][:device_index] %>: </b><%= network_interface_link(@region, network_interface[:network_interface_id]) %>
+  <ul>
+  <% network_interface[:private_ip_addresses_set].each do |address| %>
+    <li><%= address[:private_ip_address] %> <%= address_link(@region, (address[:association] || {})[:public_ip]) %></li>
+  <% end %>
+  </ul>
+  </li>
+<% end %>
+</ul>
+<p>

@@ -22,9 +22,9 @@
   <tbody>
     <% @network_interfaces.each do |network_interface| %>
       <tr>
-        <td><%= link_to network_interface.network_interface_id, region_network_interface_path(@region, network_interface) %></td>
-        <td><%= link_to network_interface.vpc_id, region_vpc_path(@region, network_interface.vpc_id) %></td>
-        <td><%= link_to network_interface.subnet_id, region_subnet_path(@region, network_interface.subnet_id) %></td>
+        <td><%= network_interface_link(@region, network_interface.network_interface_id) %></td>
+        <td><%= vpc_link(@region, network_interface.vpc_id) %></td>
+        <td><%= subnet_link(@region, network_interface.subnet_id) %></td>
         <td><%= network_interface.mac_address %></td>
         <td><%= network_interface.availability_zone %></td>
         <td><%= network_interface.source_dest_check %></td>

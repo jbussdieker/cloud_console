@@ -3,7 +3,7 @@ CloudConsole::Application.routes.draw do
 
   resources :regions do
     resources :instances
-    resources :addresses
+    resources :addresses, id: /[A-Za-z0-9\.]+?/, format: /json|csv|xml|yaml/
     resources :vpcs
     resources :network_interfaces
     resources :subnets

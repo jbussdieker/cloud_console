@@ -20,8 +20,8 @@
   <tbody>
     <% @subnets.each do |subnet| %>
       <tr>
-        <td><%= link_to subnet.subnet_id, region_subnet_path(@region, subnet) %></td>
-        <td><%= link_to subnet.vpc_id, region_vpc_path(@region, subnet.vpc_id) %></td>
+        <td><%= subnet_link(@region, subnet.subnet_id) %></td>
+        <td><%= vpc_link(@region, subnet.vpc_id) %></td>
         <td><%= subnet.state %></td>
         <td><%= subnet.cidr_block %></td>
         <td><%= subnet.availability_zone %></td>

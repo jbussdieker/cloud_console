@@ -9,8 +9,8 @@
 <table>
   <thead>
     <tr>
-      <th>domain</th>
       <th>public_ip</th>
+      <th>domain</th>
       <th>allocation_id</th>
       <th>instance_id</th>
       <th>association_id</th>
@@ -22,12 +22,12 @@
   <tbody>
     <% @addresses.each do |address| %>
       <tr>
+        <td><%= address_link(@region, address.public_ip) %></td>
         <td><%= address.domain %></td>
-        <td><%= address.public_ip %></td>
         <td><%= address.allocation_id %></td>
-        <td><%= address.instance_id %></td>
+        <td><%= instance_link(@region, address.instance_id) %></td>
         <td><%= address.association_id %></td>
-        <td><%= address.network_interface_id %></td>
+        <td><%= network_interface_link(@region, address.network_interface_id) %></td>
         <td><%= address.network_interface_owner_id %></td>
         <td><%= address.private_ip_address %></td>
       </tr>

@@ -4,15 +4,11 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "subnets", region_subnets_path(@region) %> /
-  <%= link_to @subnet.id, region_subnet_path(@region, @subnet) %>
+  <%= subnet_link(@region, @subnet.id) %>
 </div>
 
 <p>
-  <b>subnet_id: </b><%= @subnet.subnet_id %>
-</p>
-
-<p>
-  <b>vpc_id: </b><%= link_to @subnet.vpc_id, region_vpc_path(@region, @subnet.vpc_id) %>
+  <b>vpc_id: </b><%= vpc_link(@region, @subnet.vpc_id) %>
 </p>
 
 <p>

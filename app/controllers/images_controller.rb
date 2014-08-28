@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
   private
 
   def set_image
-    @image = @region.images.find {|needle| needle.to_param == params[:id] }
+    @image = @region.images.find {|needle| needle.to_param == params[:id] } || raise("Image not found")
   end
 
   def set_region

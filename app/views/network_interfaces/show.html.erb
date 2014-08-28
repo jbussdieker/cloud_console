@@ -4,19 +4,15 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "network interfaces", region_network_interfaces_path(@region) %> /
-  <%= link_to @network_interface.id, region_network_interface_path(@region, @network_interface) %>
+  <%= network_interface_link(@region, @network_interface.id) %>
 </div>
 
 <p>
-  <b>network_interface_id: </b><%= @network_interface.network_interface_id %>
+  <b>vpc_id: </b><%= vpc_link(@region, @network_interface.vpc_id) %>
 </p>
 
 <p>
-  <b>vpc_id: </b><%= link_to @network_interface.vpc_id, region_vpc_path(@region, @network_interface.vpc_id) %>
-</p>
-
-<p>
-  <b>subnet_id: </b><%= link_to @network_interface.subnet_id, region_subnet_path(@region, @network_interface.subnet_id) %>
+  <b>subnet_id: </b><%= subnet_link(@region, @network_interface.subnet_id) %>
 </p>
 
 <p>

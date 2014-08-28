@@ -4,11 +4,11 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "volumes", region_volumes_path(@region) %> /
-  <%= link_to @volume.id, region_volume_path(@region, @volume) %>
+  <%= volume_link(@region, @volume.id) %>
 </div>
 
 <p>
-  <b>size: </b><%= @volume.size %></td>
+  <b>availability_zone: </b><%= @volume.availability_zone %></td>
 </p>
 
 <p>
@@ -16,7 +16,7 @@
 </p>
 
 <p>
-  <b>availability_zone: </b><%= @volume.availability_zone %></td>
+  <b>size: </b><%= @volume.size %></td>
 </p>
 
 <p>
