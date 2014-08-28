@@ -19,3 +19,15 @@
   <dt>group_description:</dt>
   <dd><%= @security_group.group_description %></dd>
 </dl>
+
+<h4>Instances</h4>
+
+<ul>
+  <% @security_group.instances.sort.each do |instance| %>
+    <li><%= instance_link(@region, instance) %></li>
+  <% end %>
+</ul>
+
+<h4>Raw</h4>
+
+<pre><%= JSON.pretty_generate(@security_group.as_json) %></pre>

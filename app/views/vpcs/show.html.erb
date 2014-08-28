@@ -41,3 +41,7 @@
     <li><%= security_group_link(@region, group) %></li>
   <% end %>
 </ul>
+
+<h4>Raw</h4>
+
+<pre><%= JSON.pretty_generate(@vpc.as_json) %></pre>

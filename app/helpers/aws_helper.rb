@@ -49,6 +49,14 @@ module AwsHelper
     render_status(status)
   end
 
+  def attachment_status(status)
+    if status == "attached"
+      content_tag(:span, status, class: 'label label-success')
+    else
+      content_tag(:span, status, class: 'label label-default')
+    end
+  end
+
   def volume_status(status)
     render_status(status)
   end

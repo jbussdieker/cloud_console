@@ -19,3 +19,7 @@
   <dt>description:</dt>
   <dd><%= @image.description %></dd>
 </dl>
+
+<h4>Raw</h4>
+
+<pre><%= JSON.pretty_generate(@image.as_json) %></pre>

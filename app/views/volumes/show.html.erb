@@ -19,3 +19,28 @@
   <dt>size:</dt>
   <dd><%= @volume.size %></dd>
 </dl>
+
+<h4>Attachments</h4>
+
+<% @volume.attachments.each do |attachment| %>
+  <dl class="dl-horizontal">
+    <dt>instance:</dt>
+    <dd><%= instance_link(@region, attachment.instance) %></dd>
+
+    <dt>device:</dt>
+    <dd><%= attachment.device %></dd>
+
+    <dt>status:</dt>
+    <dd><%= attachment_status(attachment.status) %></dd>
+
+    <dt>attach_time:</dt>
+    <dd><%= attachment.attach_time %></dd>
+
+    <dt>delete_on_termination:</dt>
+    <dd><%= attachment.delete_on_termination %></dd>
+  </dl>
+<% end %>
+
+<h4>Raw</h4>
+
+<pre><%= JSON.pretty_generate(@volume.as_json) %></pre>

@@ -43,7 +43,19 @@
 
 <ul>
   <% @instance.volumes.each do |volume| %>
-    <li><%= volume_link(@region, volume) %></li>
+    <li>
+      <%= volume.attachment.device %> (<%= volume_link(@region, volume) %>)
+      <dl class="dl-horizontal">
+        <dt>status:</dt>
+        <dd><%= attachment_status(volume.attachment.status) %></dd>
+
+        <dt>attach_time:</dt>
+        <dd><%= volume.attachment.attach_time %></dd>
+
+        <dt>delete_on_termination:</dt>
+        <dd><%= volume.attachment.delete_on_termination %></dd>
+      </dl>
+    </li>
   <% end %>
 </ul>
 
@@ -60,3 +72,7 @@
     </li>
   <% end %>
 </ul>
+
+<h4>Raw</h4>
+
+<pre><%= JSON.pretty_generate(@instance.as_json) %></pre>
