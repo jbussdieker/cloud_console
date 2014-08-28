@@ -3,11 +3,8 @@ class SecurityGroup < Base
     group_id
   end
 
-  def self.all(params = { region: "us-east-1" })
-    ec2 = AWS::EC2.new(params)
-    client = ec2.client
-    response = client.describe_security_groups
-    response.data[:security_group_info].collect { |obj| new(obj) }
+  def self.describe_result_key
+    "#{name.underscore}_info"
   end
 end
 
