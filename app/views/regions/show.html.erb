@@ -6,24 +6,23 @@
 </div>
 
 <p>
-  <b>Name: </b><%= @region.name %>
+  <b>name: </b><%= @region.name %>
 </p>
 
 <p>
-  <b>Endpoint: </b><%= @region.endpoint %>
+  <b>region_endpoint: </b><%= @region.region_endpoint %>
 </p>
 
-<ul>
-  <li><%= link_to "VPCs", region_vpcs_path(@region) %></li>
-  <li><%= link_to "Subnets", region_subnets_path(@region) %></li>
-  <li></li>
-  <li><%= link_to "Instances", region_instances_path(@region) %></li>
-  <li></li>
-  <li><%= link_to "Images", region_images_path(@region) %></li>
-  <li></li>
-  <li><%= link_to "Volumes", region_volumes_path(@region) %></li>
-  <li></li>
-  <li><%= link_to "Security Groups", region_security_groups_path(@region) %></li>
-  <li><%= link_to "Addresses", region_addresses_path(@region) %></li>
-  <li><%= link_to "Network Interfaces", region_network_interfaces_path(@region) %></li>
-</ul>
+<p>
+  <b>links: </b>
+  <ul>
+    <li><%= link_to "VPCs", region_vpcs_path(@region) %></li>
+    <li><%= link_to "Subnets", region_subnets_path(@region) %></li>
+    <li><%= link_to "Instances", region_instances_path(@region) %></li>
+    <li><%= link_to "Images", region_images_path(@region) %></li>
+    <li><%= link_to "Volumes", region_volumes_path(@region) %></li>
+    <li><%= link_to "Security Groups", region_security_groups_path(@region) %></li>
+    <li><%= link_to "Addresses", region_addresses_path(@region) %></li>
+    <li><%= link_to "Network Interfaces", region_network_interfaces_path(@region) %></li>
+  </ul>
+</p>

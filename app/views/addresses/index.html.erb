@@ -6,30 +6,28 @@
   <%= link_to "addresses", region_addresses_path(@region) %>
 </div>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>public_ip</th>
       <th>domain</th>
+      <th>public_ip</th>
       <th>allocation_id</th>
       <th>instance_id</th>
+      <th>private_ip_address</th>
       <th>association_id</th>
       <th>network_interface_id</th>
-      <th>network_interface_owner_id</th>
-      <th>private_ip_address</th>
     </tr>
   </thead>
   <tbody>
     <% @addresses.each do |address| %>
       <tr>
-        <td><%= address_link(@region, address.public_ip) %></td>
         <td><%= address.domain %></td>
+        <td><%= address_link(@region, address.public_ip) %></td>
         <td><%= address.allocation_id %></td>
         <td><%= instance_link(@region, address.instance_id) %></td>
+        <td><%= address.private_ip_address %></td>
         <td><%= address.association_id %></td>
         <td><%= network_interface_link(@region, address.network_interface_id) %></td>
-        <td><%= address.network_interface_owner_id %></td>
-        <td><%= address.private_ip_address %></td>
       </tr>
     <% end %>
   </tbody>
