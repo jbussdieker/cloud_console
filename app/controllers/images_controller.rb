@@ -3,7 +3,7 @@ class ImagesController < AwsController
   before_filter :set_image, only: [:show]
 
   def index
-    @images = @region.images
+    @images = @region.images.sort
   end
 
   private

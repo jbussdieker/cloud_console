@@ -6,7 +6,7 @@ describe "subnets list" do
       count = region.subnets.length
 
       it "shows #{count} subnets" do
-        visit "/regions/#{region.to_param}/subnets"
+        visit region_subnets_path(region)
         expect(page).to have_content 'Subnets'
         expect(page.all("table#subnets tbody tr").count).to eql(count)
       end

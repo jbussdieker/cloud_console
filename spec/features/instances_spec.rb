@@ -6,7 +6,7 @@ describe "instances list" do
       count = region.instances.length
 
       it "shows #{count} instances" do
-        visit "/regions/#{region.to_param}/instances"
+        visit region_instances_path(region)
         expect(page).to have_content 'Instances'
         expect(page.all("table#instances tbody tr").count).to eql(count)
       end

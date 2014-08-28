@@ -6,7 +6,7 @@ describe "security group list" do
       count = region.security_groups.length
 
       it "shows #{count} security groups" do
-        visit "/regions/#{region.to_param}/security_groups"
+        visit region_security_groups_path(region)
         expect(page).to have_content 'Security Groups'
         expect(page.all("table#security_groups tbody tr").count).to eql(count)
       end

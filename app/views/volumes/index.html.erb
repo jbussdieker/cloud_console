@@ -9,7 +9,7 @@
 <table class="table" id="volumes">
   <thead>
     <tr>
-      <th>volume_id</th>
+      <th>volume</th>
       <th>availability_zone</th>
       <th>size</th>
       <th>status</th>
@@ -18,10 +18,10 @@
   <tbody>
     <% @volumes.each do |volume| %>
       <tr>
-        <td><%= volume_link(@region, volume.volume_id) %></td>
+        <td><%= volume_link(@region, volume) %></td>
         <td><%= volume.availability_zone %></td>
         <td><%= volume.size %></td>
-        <td><%= volume.status %></td>
+        <td><%= volume_status(volume.status) %></td>
       </tr>
     <% end %>
   </tbody>

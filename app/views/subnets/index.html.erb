@@ -9,23 +9,21 @@
 <table class="table" id="subnets">
   <thead>
     <tr>
-      <th>subnet_id</th>
-      <th>vpc_id</th>
-      <th>state</th>
+      <th>subnet</th>
+      <th>vpc</th>
       <th>cidr_block</th>
       <th>availability_zone</th>
-      <th>tag_set</th>
+      <th>state</th>
     </tr>
   </thead>
   <tbody>
     <% @subnets.each do |subnet| %>
       <tr>
-        <td><%= subnet_link(@region, subnet.subnet_id) %></td>
-        <td><%= vpc_link(@region, subnet.vpc_id) %></td>
-        <td><%= subnet.state %></td>
+        <td><%= subnet_link(@region, subnet) %></td>
+        <td><%= vpc_link(@region, subnet.vpc) %></td>
         <td><%= subnet.cidr_block %></td>
         <td><%= subnet.availability_zone %></td>
-        <td><%= subnet.tag_set %></td>
+        <td><%= subnet_state(subnet.state) %></td>
       </tr>
     <% end %>
   </tbody>

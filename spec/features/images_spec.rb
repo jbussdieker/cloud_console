@@ -6,7 +6,7 @@ describe "images list" do
       count = region.images.length
 
       it "shows #{count} images" do
-        visit "/regions/#{region.to_param}/images"
+        visit region_images_path(region)
         expect(page).to have_content 'Images'
         expect(page.all("table#images tbody tr").count).to eql(count)
       end

@@ -4,8 +4,12 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "vpcs", region_vpcs_path(@region) %> /
-  <%= vpc_link(@region, @vpc.id) %>
+  <%= vpc_link(@region, @vpc) %>
 </div>
+
+<p>
+  <b>state: </b><%= vpc_state(@vpc.state) %>
+</p>
 
 <p>
   <b>cidr_block: </b><%= @vpc.cidr_block %>
@@ -24,9 +28,19 @@
 </p>
 
 <p>
-  <b>state: </b><%= @vpc.state %>
+  <b>subnets: </b>
+  <ul>
+    <% @vpc.subnets.sort.each do |subnet| %>
+      <li><%= subnet_link(@region, subnet) %></li>
+    <% end %>
+  </ul>
 </p>
 
 <p>
-  <b>tag_set: </b><%= @vpc.tag_set %>
+  <b>security groups: </b>
+  <ul>
+    <% @vpc.groups.sort.each do |group| %>
+      <li><%= security_group_link(@region, group) %></li>
+    <% end %>
+  </ul>
 </p>

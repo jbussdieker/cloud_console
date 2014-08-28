@@ -4,19 +4,23 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "subnets", region_subnets_path(@region) %> /
-  <%= subnet_link(@region, @subnet.id) %>
+  <%= subnet_link(@region, @subnet) %>
 </div>
 
 <p>
-  <b>vpc_id: </b><%= vpc_link(@region, @subnet.vpc_id) %>
+  <b>vpc: </b><%= vpc_link(@region, @subnet.vpc) %>
 </p>
 
 <p>
-  <b>state: </b><%= @subnet.state %>
+  <b>state: </b><%= subnet_state(@subnet.state) %>
 </p>
 
 <p>
   <b>cidr_block: </b><%= @subnet.cidr_block %>
+</p>
+
+<p>
+  <b>availability_zone: </b><%= @subnet.availability_zone %>
 </p>
 
 <p>
@@ -29,12 +33,4 @@
 
 <p>
   <b>map_public_ip_on_launch: </b><%= @subnet.map_public_ip_on_launch %>
-</p>
-
-<p>
-  <b>availability_zone: </b><%= @subnet.availability_zone %>
-</p>
-
-<p>
-  <b>tag_set: </b><%= @subnet.tag_set %>
 </p>

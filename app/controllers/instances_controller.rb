@@ -3,7 +3,7 @@ class InstancesController < AwsController
   before_filter :set_instance, only: [:show]
 
   def index
-    @instances = @region.instances
+    @instances = @region.instances.sort
   end
 
   private

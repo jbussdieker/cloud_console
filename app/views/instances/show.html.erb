@@ -4,11 +4,15 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "instances", region_instances_path(@region) %> /
-  <%= instance_link(@region, @instance.id) %>
+  <%= instance_link(@region, @instance) %>
 </div>
 
 <p>
-  <b>instance_type: </b><%= @instance.instance_type %>
+  <b>state: </b><%= instance_state(@instance.instance_state) %>
+</p>
+
+<p>
+  <b>type: </b><%= @instance.instance_type %>
 </p>
 
 <p>
@@ -20,11 +24,11 @@
 </p>
 
 <p>
-  <b>vpc_id: </b><%= vpc_link(@region, @instance.vpc_id) %>
+  <b>vpc: </b><%= vpc_link(@region, @instance.vpc) %>
 </p>
 
 <p>
-  <b>subnet_id: </b><%= subnet_link(@region, @instance.subnet_id) %>
+  <b>subnet: </b><%= subnet_link(@region, @instance.subnet) %>
 </p>
 
 <p>
@@ -33,33 +37,35 @@
 
 <p>
   <b>groups: </b>
-<ul>
-<% @instance.group_set.each do |group| %>
-  <li><%= security_group_link(@region, group[:group_id]) %></li>
-<% end %>
-</ul>
+
+  <ul>
+    <% @instance.groups.each do |group| %>
+      <li><%= security_group_link(@region, group) %></li>
+    <% end %>
+  </ul>
 <p>
 
 <p>
   <b>volumes: </b>
-<ul>
-<% @instance.block_device_mapping.each do |mapping| %>
-  <li><%= volume_link(@region, (mapping[:ebs] || {})[:volume_id]) %></li>
-<% end %>
-</ul>
+
+  <ul>
+    <% @instance.volumes.each do |volume| %>
+      <li><%= volume_link(@region, volume) %></li>
+    <% end %>
+  </ul>
 <p>
 
 <p>
   <b>network_interfaces: </b>
-<ul>
-<% @instance.network_interface_set.sort_by {|s| s[:attachment][:device_index] }.each do |network_interface| %>
-  <li><b>eth<%= network_interface[:attachment][:device_index] %>: </b><%= network_interface_link(@region, network_interface[:network_interface_id]) %>
   <ul>
-  <% network_interface[:private_ip_addresses_set].each do |address| %>
-    <li><%= address[:private_ip_address] %> <%= address_link(@region, (address[:association] || {})[:public_ip]) %></li>
-  <% end %>
+    <% @instance.network_interfaces.sort_by {|ni| ni.attachment[:device_index] }.each do |network_interface| %>
+      <li>eth<%= network_interface.attachment[:device_index] %> (<%= network_interface_link(@region, network_interface) %>)
+      <ul>
+      <% network_interface.private_ip_addresses_set.each do |address| %>
+        <li><%= address[:private_ip_address] %> <%= address_link(@region, (address[:association] || {})[:public_ip]) %></li>
+      <% end %>
+      </ul>
+      </li>
+    <% end %>
   </ul>
-  </li>
-<% end %>
-</ul>
 <p>

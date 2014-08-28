@@ -9,23 +9,23 @@
 <table class="table" id="instances">
   <thead>
     <tr>
-      <th>instance_id</th>
+      <th>instance</th>
       <th>image_id</th>
-      <th>instance_type</th>
-      <th>vpc_id</th>
-      <th>subnet_id</th>
-      <th>instance_state</th>
+      <th>type</th>
+      <th>vpc</th>
+      <th>subnet</th>
+      <th>state</th>
     </tr>
   </thead>
   <tbody>
     <% @instances.each do |instance| %>
       <tr>
-        <td><%= instance_link(@region, instance.instance_id) %></td>
+        <td><%= instance_link(@region, instance) %></td>
         <td><%= image_link(@region, instance.image_id) %></td>
         <td><%= instance.instance_type %></td>
-        <td><%= vpc_link(@region, instance.vpc_id) %></td>
-        <td><%= subnet_link(@region, instance.subnet_id) %></td>
-        <td><%= instance.instance_state %></td>
+        <td><%= vpc_link(@region, instance.vpc) %></td>
+        <td><%= subnet_link(@region, instance.subnet) %></td>
+        <td><%= instance_state(instance.instance_state) %></td>
       </tr>
     <% end %>
   </tbody>

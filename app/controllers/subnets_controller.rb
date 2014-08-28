@@ -3,7 +3,7 @@ class SubnetsController < AwsController
   before_filter :set_subnet, only: [:show]
 
   def index
-    @subnets = @region.subnets
+    @subnets = @region.subnets.sort
   end
 
   private

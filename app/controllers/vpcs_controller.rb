@@ -3,7 +3,7 @@ class VpcsController < AwsController
   before_filter :set_vpc, only: [:show]
 
   def index
-    @vpcs = @region.vpcs
+    @vpcs = @region.vpcs.sort
   end
 
   private

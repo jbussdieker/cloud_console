@@ -9,18 +9,18 @@
 <table class="table" id="security_groups">
   <thead>
     <tr>
-      <th>group_id</th>
-      <th>vpc_id</th>
       <th>name</th>
+      <th>group_id</th>
+      <th>vpc</th>
       <th>description</th>
     </tr>
   </thead>
   <tbody>
     <% @security_groups.each do |security_group| %>
       <tr>
-        <td><%= security_group_link @region, security_group.group_id %></td>
-        <td><%= vpc_link(@region, security_group.vpc_id) %></td>
-        <td><%= security_group.group_name %></td>
+        <td><%= security_group_link @region, security_group %></td>
+        <td><%= security_group.id %></td>
+        <td><%= vpc_link(@region, security_group.vpc) %></td>
         <td><%= security_group.group_description %></td>
       </tr>
     <% end %>

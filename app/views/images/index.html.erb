@@ -9,17 +9,17 @@
 <table class="table" id="images">
   <thead>
     <tr>
+      <th>image</th>
       <th>image_id</th>
-      <th>name</th>
-      <th>image_state</th>
+      <th>state</th>
     </tr>
   </thead>
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image_link(@region, image.image_id) %></td>
-        <td><%= image.name %></td>
-        <td><%= image.image_state %></td>
+        <td><%= image_link(@region, image) %></td>
+        <td><%= image.image_id %></td>
+        <td><%= image_state(image.image_state) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -34,4 +34,54 @@ module AwsHelper
   def network_interface_link(region, network_interface)
     link_to network_interface, region_network_interface_path(region, network_interface) if network_interface
   end
+
+  def instance_state(state)
+    if state[:name] == "running"
+      content_tag(:span, state[:name], class: 'label label-success')
+    elsif state[:name] == "stopped"
+      content_tag(:span, state[:name], class: 'label label-default')
+    else
+      state
+    end
+  end
+
+  def network_interface_status(status)
+    render_status(status)
+  end
+
+  def volume_status(status)
+    render_status(status)
+  end
+
+  def subnet_state(state)
+    render_state(state)
+  end
+
+  def image_state(state)
+    render_state(state)
+  end
+
+  def vpc_state(state)
+    render_state(state)
+  end
+
+  private
+
+  def render_status(status)
+    if status == "in-use"
+      content_tag(:span, status, class: 'label label-success')
+    elsif status == "available"
+      content_tag(:span, status, class: 'label label-warning')
+    else
+      content_tag(:span, status, class: 'label label-default')
+    end
+  end
+
+  def render_state(state)
+    if state == "available"
+      content_tag(:span, state, class: 'label label-success')
+    else
+      content_tag(:span, state, class: 'label label-default')
+    end
+  end
 end

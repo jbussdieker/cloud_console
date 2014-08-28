@@ -8,11 +8,15 @@
 </div>
 
 <p>
-  <b>vpc_id: </b><%= vpc_link(@region, @network_interface.vpc_id) %>
+  <b>vpc: </b><%= vpc_link(@region, @network_interface.vpc) %>
 </p>
 
 <p>
-  <b>subnet_id: </b><%= subnet_link(@region, @network_interface.subnet_id) %>
+  <b>subnet: </b><%= subnet_link(@region, @network_interface.subnet) %>
+</p>
+
+<p>
+  <b>instance: </b><%= instance_link(@region, @network_interface.instance) %>
 </p>
 
 <p>

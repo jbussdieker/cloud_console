@@ -5,7 +5,6 @@ class Region < Base
 
   def name
     case region_name
-=begin
       when "eu-west-1"
         "dublin"
       when "sa-east-1"
@@ -22,8 +21,7 @@ class Region < Base
         "singapore"
       when "ap-southeast-2"
         "sydney"
-=end
-      when "asdfasdf"
+#      when "asdfasdf"
       else
         region_name
     end

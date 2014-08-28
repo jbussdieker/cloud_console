@@ -3,7 +3,7 @@ class VolumesController < AwsController
   before_filter :set_volume, only: [:show]
 
   def index
-    @volumes = @region.volumes
+    @volumes = @region.volumes.sort
   end
 
   private

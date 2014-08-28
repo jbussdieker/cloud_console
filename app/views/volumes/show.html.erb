@@ -4,7 +4,7 @@
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "volumes", region_volumes_path(@region) %> /
-  <%= volume_link(@region, @volume.id) %>
+  <%= volume_link(@region, @volume) %>
 </div>
 
 <p>
@@ -12,13 +12,9 @@
 </p>
 
 <p>
-  <b>status: </b><%= @volume.status %></td>
+  <b>status: </b><%= volume_status(@volume.status) %></td>
 </p>
 
 <p>
   <b>size: </b><%= @volume.size %></td>
-</p>
-
-<p>
-  <b>tag_set: </b><%= @volume.tag_set %></td>
 </p>

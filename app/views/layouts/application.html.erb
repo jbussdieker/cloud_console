@@ -9,40 +9,8 @@
 <body>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <p>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <%= @region.name %> <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <% @regions.each do |region| %>
-              <li><%= region_link(region) %></li>
-            <% end %>
-          </ul>
-        </div>
-      </p>
-
-      <ul class="nav nav-pills nav-stacked">
-        <li><%= link_to "VPCs", region_vpcs_path(@region) %></li>
-        <li><%= link_to "Subnets", region_subnets_path(@region) %></li>
-
-        <li><%= link_to "Instances", region_instances_path(@region) %></li>
-
-        <li><%= link_to "Images", region_images_path(@region) %></li>
-
-        <li><%= link_to "Volumes", region_volumes_path(@region) %></li>
-
-        <li><%= link_to "Security Groups", region_security_groups_path(@region) %></li>
-        <li><%= link_to "Addresses", region_addresses_path(@region) %></li>
-        <li><%= link_to "Network Interfaces", region_network_interfaces_path(@region) %></li>
-      </ul>
-    </div>
-    <div class="col-md-10">
-      <%= yield %>
-    </div>
-  </div>
+  <%= yield %>
 </div>
+
 </body>
 </html>

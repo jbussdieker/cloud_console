@@ -6,7 +6,7 @@ describe "vpcs list" do
       count = region.vpcs.length
 
       it "shows #{count} vpcs" do
-        visit "/regions/#{region.to_param}/vpcs"
+        visit region_vpcs_path(region)
         expect(page).to have_content 'VPCs'
         expect(page.all("table#vpcs tbody tr").count).to eql(count)
       end

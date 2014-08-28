@@ -9,19 +9,17 @@
 <table class="table" id="vpcs">
   <thead>
     <tr>
-      <th>vpc_id</th>
+      <th>vpc</th>
       <th>cidr_block</th>
       <th>state</th>
-      <th>tag_set</th>
     </tr>
   </thead>
   <tbody>
     <% @vpcs.each do |vpc| %>
       <tr>
-        <td><%= vpc_link(@region.id, vpc.vpc_id) %></td>
+        <td><%= vpc_link(@region.id, vpc) %></td>
         <td><%= vpc.cidr_block %></td>
-        <td><%= vpc.state %></td>
-        <td><%= vpc.tag_set %></td>
+        <td><%= vpc_state(vpc.state) %></td>
       </tr>
     <% end %>
   </tbody>
