@@ -9,6 +9,14 @@ class Base
     id
   end
 
+  def name
+    id
+  end
+
+  def id
+    send(self.class.primary_key)
+  end
+
   def to_s
     name
   end
@@ -25,6 +33,14 @@ class Base
     Rails.cache.fetch(name.underscore.pluralize, namespace: params[:region], expires_in: 1.minute) do
       describe(params)
     end
+  end
+
+  def self.primary_key=(value)
+    @primery_key = value
+  end
+
+  def self.primary_key
+    @primery_key
   end
 
   def self.describe_function=(value)

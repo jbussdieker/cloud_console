@@ -1,12 +1,10 @@
 class Instance < Base
   include Taggable
 
-  def id
-    instance_id
-  end
+  self.primary_key = :instance_id
 
   def name
-    self["Name"] || instance_id
+    self["Name"] || id
   end
 
   def vpc

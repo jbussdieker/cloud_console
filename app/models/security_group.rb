@@ -1,9 +1,6 @@
 class SecurityGroup < Base
   self.describe_result_key = "#{name.underscore}_info"
-
-  def id
-    group_id
-  end
+  self.primary_key = :group_id
 
   def name
     group_name

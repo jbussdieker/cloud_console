@@ -1,9 +1,6 @@
 class Region < Base
   self.describe_result_key = "#{name.downcase}_info"
-
-  def id
-    region_name
-  end
+  self.primary_key = :region_name
 
   def name
     case region_name
