@@ -3,10 +3,6 @@ class Vpc < Base
 
   self.primary_key = :vpc_id
 
-  def name
-    self["Name"] || id
-  end
-
   def subnets
     Subnet.all(region: region).find_all do |subnet|
       subnet.vpc_id == id

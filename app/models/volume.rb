@@ -3,10 +3,6 @@ class Volume < Base
 
   self.primary_key = :volume_id
 
-  def name
-    self["Name"] || id
-  end
-
   def attachment
     raise "More than one attachment" if attachments.length > 1
     attachments.first

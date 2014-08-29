@@ -3,10 +3,6 @@ class Instance < Base
 
   self.primary_key = :instance_id
 
-  def name
-    self["Name"] || id
-  end
-
   def vpc
     Vpc.find(vpc_id, region: region)
   end

@@ -10,7 +10,11 @@ class Base
   end
 
   def name
-    id
+    if respond_to? :[]
+      self["Name"] || id
+    else
+      id
+    end
   end
 
   def id
