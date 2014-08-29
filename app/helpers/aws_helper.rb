@@ -37,9 +37,11 @@ module AwsHelper
 
   def instance_state(state)
     if state[:name] == "running"
-      content_tag(:span, state[:name], class: 'label label-success')
+      content_tag(:span, "#{state[:name]} (#{state[:code]})", class: 'label label-success')
+    elsif state[:name] == "terminated"
+      content_tag(:span, "#{state[:name]} (#{state[:code]})", class: 'label label-danger')
     elsif state[:name] == "stopped"
-      content_tag(:span, state[:name], class: 'label label-default')
+      content_tag(:span, "#{state[:name]} (#{state[:code]})", class: 'label label-default')
     else
       state
     end
@@ -71,6 +73,28 @@ module AwsHelper
 
   def vpc_state(state)
     render_state(state)
+  end
+
+  def instance_status(instance_status)
+    return unless instance_status
+
+    passed = 0
+    count = 0
+
+    (instance_status.system_status[:details] + instance_status.instance_status[:details]).each do |check|
+      count += 1
+      passed += 1 if check[:status] == "passed"
+    end
+
+    result = "#{passed}/#{count} checks are passing"
+
+    if count == passed
+      content_tag(:span, result, class: 'label label-success')
+    elsif passed > 0
+      content_tag(:span, result, class: 'label label-warning')
+    else
+      content_tag(:span, result, class: 'label label-danger')
+    end
   end
 
   private

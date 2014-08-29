@@ -6,6 +6,7 @@ class Instance < Base
   has_many :network_interfaces
   belongs_to :vpc
   belongs_to :subnet
+  belongs_to :instance_status
 
   def security_groups
     group_set.collect do |group|

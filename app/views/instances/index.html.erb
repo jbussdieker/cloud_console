@@ -14,17 +14,19 @@
       <th>type</th>
       <th>vpc</th>
       <th>subnet</th>
+      <th>health</th>
       <th>state</th>
     </tr>
   </thead>
   <tbody>
     <% @instances.each do |instance| %>
-      <tr>
+      <tr class="<%= "danger" if instance.instance_status && instance.instance_status.events_set.length > 0 %>">
         <td><%= instance_link(@region, instance) %></td>
         <td><%= image_link(@region, instance.image_id) %></td>
         <td><%= instance.instance_type %></td>
         <td><%= vpc_link(@region, instance.vpc) %></td>
         <td><%= subnet_link(@region, instance.subnet) %></td>
+        <td><%= instance_status(instance.instance_status) %></td>
         <td><%= instance_state(instance.instance_state) %></td>
       </tr>
     <% end %>
