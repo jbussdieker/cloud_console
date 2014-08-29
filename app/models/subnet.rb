@@ -1,9 +1,7 @@
 class Subnet < Base
   include Taggable
 
-  def id
-    subnet_id
-  end
+  self.primary_key = :subnet_id
 
   def name
     self["Name"] || subnet_id

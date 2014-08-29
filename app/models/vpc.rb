@@ -1,9 +1,7 @@
 class Vpc < Base
   include Taggable
 
-  def id
-    vpc_id
-  end
+  self.primary_key = :vpc_id
 
   def name
     self["Name"] || vpc_id

@@ -1,9 +1,7 @@
 class Volume < Base
   include Taggable
 
-  def id
-    volume_id
-  end
+  self.primary_key = :volume_id
 
   def name
     self["Name"] || id

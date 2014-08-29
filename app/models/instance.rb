@@ -1,9 +1,8 @@
 class Instance < Base
   include Taggable
 
-  def id
-    instance_id
-  end
+  self.primary_key = :instance_id
+  self.describe_result_key = :reservation_set
 
   def name
     self["Name"] || instance_id
@@ -37,12 +36,9 @@ class Instance < Base
     end
   end
 
-  def self.describe(params = { region: "us-east-1" })
-    ec2 = AWS::EC2.new(params)
-    client = ec2.client
-    response = client.describe_instances
-    Rails.logger
-    response.data[:reservation_set].collect do |rs|
+  def self.describe(params = { region: "us-east-1" }, describe_params = {})
+    super.collect do |rs|
+      p rs
       rs[:instances_set].collect do |obj|
         new(obj.merge(params).merge({:reservation_id => rs[:reservation_id]}))
       end

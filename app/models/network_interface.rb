@@ -1,7 +1,5 @@
 class NetworkInterface < Base
-  def id
-    network_interface_id
-  end
+  self.primary_key = :network_interface_id
 
   def name
     id
