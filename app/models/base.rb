@@ -1,5 +1,10 @@
 class Base
-  def initialize(data = {})
+  attr_accessor :client
+  attr_accessor :region
+
+  def initialize(data = {}, client = nil, region = nil)
+    @client = client
+    @region = region
     data.each do |k, v|
       instance_variable_set("@#{k}", v)
     end
@@ -27,17 +32,10 @@ class Base
     end
   end
 
-  def self.describe_func
-    "describe_#{name.underscore.pluralize}"
-  end
 
-  def self.describe_result_key
-    "#{name.underscore}_set"
-  end
-
-  def self.describe(params)
-    client(params).send(describe_func).data[describe_result_key.to_sym].collect do |obj|
-      new(obj.merge(params))
+  def self.describe(client)
+    client.send(describe_func).data[describe_result_key.to_sym].collect do |obj|
+      new(obj, client)
     end
   end
 
@@ -46,14 +44,6 @@ class Base
   end
 
   private
-
-  def self.client(params)
-    AWS::EC2.new(params).client
-  end
-
-  def client(params)
-    AWS::EC2.new(params).client
-  end
 
   def method_missing(name, *args, &block)
     instance_variable_get("@#{name}")

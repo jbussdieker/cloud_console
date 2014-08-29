@@ -21,22 +21,21 @@ class Region < Base
         "singapore"
       when "ap-southeast-2"
         "sydney"
-#      when "asdfasdf"
       else
         region_name
     end
   end
 
+  def client
+    @client.regions[region_name]
+  end
+
   def instances; Instance.all(:region => to_param); end
-  def subnets; Subnet.all(:region => to_param); end
-  def vpcs; Vpc.all(:region => to_param); end
+  def subnets; SubnetCollection.new(client); end
+  def vpcs; VpcCollection.new(client); end
   def addresses; Address.all(:region => to_param); end
   def network_interfaces; NetworkInterface.all(:region => to_param); end
   def images; Image.all(:region => to_param); end
   def volumes; Volume.all(:region => to_param); end
   def security_groups; SecurityGroup.all(:region => to_param); end
-
-  def self.describe_result_key
-    "#{name.downcase}_info"
-  end
 end

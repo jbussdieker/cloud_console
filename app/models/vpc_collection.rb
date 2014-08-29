@@ -1,0 +1,2 @@
+class VpcCollection < BaseCollection
+end
