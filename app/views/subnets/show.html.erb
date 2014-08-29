@@ -32,6 +32,14 @@
   <dd><%= @subnet.map_public_ip_on_launch %></dd>
 </dl>
 
+<h4>Instances</h4>
+
+<ul>
+  <% @subnet.instances.sort.each do |instance| %>
+    <li><%= instance_link(@region, instance) %></li>
+  <% end %>
+</ul>
+
 <h4>Raw</h4>
 
 <pre><%= JSON.pretty_generate(@subnet.as_json) %></pre>

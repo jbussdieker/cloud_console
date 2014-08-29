@@ -34,6 +34,14 @@
   <% end %>
 </ul>
 
+<h4>Instances</h4>
+
+<ul>
+  <% @vpc.instances.sort.each do |instance| %>
+    <li><%= instance_link(@region, instance) %></li>
+  <% end %>
+</ul>
+
 <h4>Security Groups</h4>
 
 <ul>

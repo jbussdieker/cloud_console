@@ -3,7 +3,7 @@ class Subnet < Base
 
   self.primary_key = :subnet_id
 
-  def vpc
-    Vpc.find(vpc_id, region: region)
-  end
+  has_many :instances
+  has_many :network_interfaces
+  belongs_to :vpc
 end

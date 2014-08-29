@@ -1,17 +1,13 @@
 class NetworkInterface < Base
+  include Taggable
+
   self.primary_key = :network_interface_id
 
-  def vpc
-    Vpc.find(vpc_id, region: region)
-  end
+  belongs_to :vpc
+  belongs_to :subnet
+  belongs_to :instance
 
-  def subnet
-    Subnet.find(subnet_id, region: region)
-  end
-
-  def instance
-    if attachment
-      Instance.find(attachment[:instance_id], region: region)
-    end
+  def instance_id
+    attachment[:instance_id] if attachment
   end
 end

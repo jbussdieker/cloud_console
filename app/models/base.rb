@@ -33,8 +33,23 @@ class Base
     self.send(sort_key) <=> other.send(sort_key)
   end
 
+  def self.belongs_to(relation)
+    define_method(relation) do
+      klass = relation.to_s.singularize.camelize.constantize
+      klass.find(send(klass.primary_key), region: region)
+    end
+  end
+
+  def self.has_many(relation)
+    define_method(relation) do
+      relation.to_s.singularize.camelize.constantize.all(region: region).find_all do |obj|
+        obj.send(self.class.primary_key) == id
+      end
+    end
+  end
+
   def self.all(params = { region: "us-east-1" })
-    Rails.cache.fetch(name.underscore.pluralize, namespace: params[:region], expires_in: 1.minute) do
+    Rails.cache.fetch(name.underscore.pluralize, namespace: params[:region], expires_in: 30.minutes) do
       describe(params)
     end
   end

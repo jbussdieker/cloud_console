@@ -1,4 +1,6 @@
 class SecurityGroup < Base
+  include Taggable
+
   self.describe_result_key = "#{name.underscore}_info"
   self.primary_key = :group_id
 

@@ -3,19 +3,17 @@ class Instance < Base
 
   self.primary_key = :instance_id
 
-  def vpc
-    Vpc.find(vpc_id, region: region)
-  end
+  has_many :network_interfaces
+  belongs_to :vpc
+  belongs_to :subnet
 
-  def subnet
-    Subnet.find(subnet_id, region: region)
-  end
-
-  def groups
+  def security_groups
     group_set.collect do |group|
       SecurityGroup.find(group[:group_id], region: region) || raise("Group not found #{group[:group_id]}")
     end
   end
+
+  alias_method :groups, :security_groups
 
   def volumes
     block_device_mapping.collect do |mapping|
@@ -23,12 +21,6 @@ class Instance < Base
         Volume.find(mapping[:ebs][:volume_id], region: region)
       end
     end.compact
-  end
-
-  def network_interfaces
-    network_interface_set.collect do |network_interface|
-      NetworkInterface.find(network_interface[:network_interface_id], region: region)
-    end
   end
 
   def self.describe(params = { region: "us-east-1" })

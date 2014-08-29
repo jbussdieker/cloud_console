@@ -3,15 +3,9 @@ class Vpc < Base
 
   self.primary_key = :vpc_id
 
-  def subnets
-    Subnet.all(region: region).find_all do |subnet|
-      subnet.vpc_id == id
-    end
-  end
+  has_many :subnets
+  has_many :security_groups
+  has_many :instances
 
-  def groups
-    SecurityGroup.all(region: region).find_all do |group|
-      group.vpc_id == id
-    end
-  end
+  alias_method :groups, :security_groups
 end
