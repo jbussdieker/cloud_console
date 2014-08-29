@@ -22,21 +22,30 @@ class Base
   end
 
   def self.all(params = { region: "us-east-1" })
-    Rails.cache.fetch(name.underscore.pluralize, namespace: params[:region], expires_in: 90.minutes) do
+    Rails.cache.fetch(name.underscore.pluralize, namespace: params[:region], expires_in: 1.minute) do
       describe(params)
     end
   end
 
-  def self.describe_func
-    "describe_#{name.underscore.pluralize}"
+  def self.describe_function=(value)
+    @describe_function = value
+  end
+
+  def self.describe_function
+    @describe_function ||= "describe_#{name.underscore.pluralize}"
+  end
+
+  def self.describe_result_key=(value)
+    @describe_result_key = value
   end
 
   def self.describe_result_key
-    "#{name.underscore}_set"
+    @describe_result_key ||= "#{name.underscore}_set"
   end
 
-  def self.describe(params)
-    client(params).send(describe_func).data[describe_result_key.to_sym].collect do |obj|
+  def self.describe(params, args = {})
+    result = client(params).send(describe_function, args)
+    result.data[describe_result_key.to_sym].collect do |obj|
       new(obj.merge(params))
     end
   end

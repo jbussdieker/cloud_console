@@ -1,4 +1,6 @@
 class SecurityGroup < Base
+  self.describe_result_key = "#{name.underscore}_info"
+
   def id
     group_id
   end
@@ -15,10 +17,6 @@ class SecurityGroup < Base
     Instance.all(region: region).find_all do |instance|
       instance.groups.find { |group| group.id == id } != nil
     end
-  end
-
-  def self.describe_result_key
-    "#{name.underscore}_info"
   end
 end
 

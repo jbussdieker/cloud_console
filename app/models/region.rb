@@ -1,4 +1,6 @@
 class Region < Base
+  self.describe_result_key = "#{name.downcase}_info"
+
   def id
     region_name
   end
@@ -35,8 +37,4 @@ class Region < Base
   def images; Image.all(:region => to_param); end
   def volumes; Volume.all(:region => to_param); end
   def security_groups; SecurityGroup.all(:region => to_param); end
-
-  def self.describe_result_key
-    "#{name.downcase}_info"
-  end
 end

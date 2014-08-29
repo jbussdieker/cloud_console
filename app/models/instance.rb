@@ -38,10 +38,7 @@ class Instance < Base
   end
 
   def self.describe(params = { region: "us-east-1" })
-    ec2 = AWS::EC2.new(params)
-    client = ec2.client
-    response = client.describe_instances
-    Rails.logger
+    response = client(params).send(describe_function)
     response.data[:reservation_set].collect do |rs|
       rs[:instances_set].collect do |obj|
         new(obj.merge(params).merge({:reservation_id => rs[:reservation_id]}))
