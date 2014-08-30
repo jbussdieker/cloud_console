@@ -8,6 +8,6 @@ class AddressesController < AwsController
   private
 
   def set_address
-    @address = @region.addresses.find {|needle| needle.to_param == params[:id] } || raise("Address not found with id #{params[:id]}")
+    @address = @region.addresses.find(params[:id])
   end
 end

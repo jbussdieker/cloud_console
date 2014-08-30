@@ -8,6 +8,6 @@ class NetworkInterfacesController < AwsController
   private
 
   def set_network_interface
-    @network_interface = @region.network_interfaces.find {|needle| needle.to_param == params[:id] }
+    @network_interface = @region.network_interfaces.find(params[:id])
   end
 end

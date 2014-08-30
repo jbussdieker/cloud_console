@@ -8,6 +8,6 @@ class SubnetsController < AwsController
   private
 
   def set_subnet
-    @subnet = @region.subnets.find {|needle| needle.to_param == params[:id] }
+    @subnet = @region.subnets.find(params[:id])
   end
 end

@@ -8,6 +8,6 @@ class SecurityGroupsController < AwsController
   private
 
   def set_security_group
-    @security_group = @region.security_groups.find {|needle| needle.to_param == params[:id] }
+    @security_group = @region.security_groups.find(params[:id])
   end
 end

@@ -1,4 +1,60 @@
 class Base
+  class Collection
+    include Enumerable
+
+    attr_accessor :klass, :params
+
+    def initialize(klass, params = {})
+      @klass = klass
+      @params = params
+    end
+
+    def all
+      fetch_objects
+    end
+
+    def each(&block)
+      fetch_objects.each do |obj|
+        yield(obj)
+      end
+    end
+
+    def find(id)
+      super() do |item|
+        item.id == id
+      end
+    end
+
+    def find_by(params)
+      fetch_objects.each do |obj|
+        match = true
+        params.each do |k,v|
+          match = false unless obj.send(k) == v
+        end
+        return obj if match
+      end
+      nil
+    end
+
+    private
+
+    def fetch_objects
+      Rails.cache.fetch(klass.name.underscore.pluralize, namespace: params[:region], expires_in: 30.minutes) do
+        fetch_data.each do |obj|
+          klass.new(obj)
+        end
+      end
+    end
+
+    def fetch_data
+      klass.describe(params)
+    end
+
+    def client
+      AWS::EC2.new(params).client
+    end
+  end
+
   def initialize(data = {})
     data.each do |k, v|
       instance_variable_set("@#{k}", v)
@@ -51,9 +107,7 @@ class Base
   end
 
   def self.all(params = { region: "us-east-1" })
-    Rails.cache.fetch(name.underscore.pluralize, namespace: params[:region], expires_in: 30.minutes) do
-      describe(params)
-    end
+    Collection.new(self, params).all
   end
 
   def self.primary_key=(value)
@@ -88,7 +142,7 @@ class Base
   end
 
   def self.find(id, params = { region: "us-east-1" })
-    all(params).find { |needle| needle.to_param == id }
+    Collection.new(self, params).find(id)
   end
 
   private

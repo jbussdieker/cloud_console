@@ -8,6 +8,6 @@ class InstancesController < AwsController
   private
 
   def set_instance
-    @instance = @region.instances.find {|needle| needle.to_param == params[:id] }
+    @instance = @region.instances.find(params[:id])
   end
 end

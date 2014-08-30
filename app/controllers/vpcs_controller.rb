@@ -8,6 +8,6 @@ class VpcsController < AwsController
   private
 
   def set_vpc
-    @vpc = @region.vpcs.find { |needle| needle.to_param == params[:id] }
+    @vpc = @region.vpcs.find(params[:id])
   end
 end

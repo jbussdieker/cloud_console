@@ -8,6 +8,6 @@ class VolumesController < AwsController
   private
 
   def set_volume
-    @volume = @region.volumes.find { |needle| needle.to_param == params[:id] }
+    @volume = @region.volumes.find(params[:id])
   end
 end

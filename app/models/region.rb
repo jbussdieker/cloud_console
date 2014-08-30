@@ -26,12 +26,12 @@ class Region < Base
     end
   end
 
-  def instances; Instance.all(:region => to_param); end
-  def subnets; Subnet.all(:region => to_param); end
-  def vpcs; Vpc.all(:region => to_param); end
-  def addresses; Address.all(:region => to_param); end
-  def network_interfaces; NetworkInterface.all(:region => to_param); end
-  def images; Image.all(:region => to_param); end
-  def volumes; Volume.all(:region => to_param); end
-  def security_groups; SecurityGroup.all(:region => to_param); end
+  def instances; Collection.new(Instance, :region => to_param); end
+  def subnets; Collection.new(Subnet, :region => to_param); end
+  def vpcs; Collection.new(Vpc, :region => to_param); end
+  def addresses; Collection.new(Address, :region => to_param); end
+  def network_interfaces; Collection.new(NetworkInterface, :region => to_param); end
+  def images; Collection.new(Image, :region => to_param); end
+  def volumes; Collection.new(Volume, :region => to_param); end
+  def security_groups; Collection.new(SecurityGroup, :region => to_param); end
 end
