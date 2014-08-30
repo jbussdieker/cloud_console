@@ -13,6 +13,10 @@ class Base
       fetch_objects
     end
 
+    def length
+      all.length
+    end
+
     def each(&block)
       fetch_objects.each do |obj|
         yield(obj)
