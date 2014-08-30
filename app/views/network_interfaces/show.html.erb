@@ -1,5 +1,3 @@
-<h2>Network Interfaces</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
@@ -7,34 +5,46 @@
   <%= network_interface_link(@region, @network_interface.id) %>
 </div>
 
-<h4>Details</h4>
+<h2><%= @network_interface %></h2>
 
-<dl class="dl-horizontal">
-  <dt>vpc: </dt>
-  <dd><%= vpc_link(@region, @network_interface.vpc) %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Details</h4>
+  </div>
 
-  <dt>subnet: </dt>
-  <dd><%= subnet_link(@region, @network_interface.subnet) %></dd>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>vpc: </dt>
+      <dd><%= vpc_link(@region, @network_interface.vpc) %></dd>
 
-  <dt>instance: </dt>
-  <dd><%= instance_link(@region, @network_interface.instance) %></dd>
+      <dt>subnet: </dt>
+      <dd><%= subnet_link(@region, @network_interface.subnet) %></dd>
 
-  <dt>mac_address: </dt>
-  <dd><%= @network_interface.mac_address %></dd>
+      <dt>instance: </dt>
+      <dd><%= instance_link(@region, @network_interface.instance) %></dd>
 
-  <dt>availability_zone: </dt>
-  <dd><%= @network_interface.availability_zone %></dd>
+      <dt>mac_address: </dt>
+      <dd><%= @network_interface.mac_address %></dd>
 
-  <dt>source_dest_check: </dt>
-  <dd><%= @network_interface.source_dest_check %></dd>
+      <dt>availability_zone: </dt>
+      <dd><%= @network_interface.availability_zone %></dd>
 
-  <dt>status: </dt>
-  <dd><%= @network_interface.status %></dd>
+      <dt>source_dest_check: </dt>
+      <dd><%= @network_interface.source_dest_check %></dd>
 
-  <dt>description: </dt>
-  <dd><%= @network_interface.description %></dd>
-</dl>
+      <dt>status: </dt>
+      <dd><%= @network_interface.status %></dd>
 
-<h4>Raw</h4>
+      <dt>description: </dt>
+      <dd><%= @network_interface.description %></dd>
+    </dl>
+  </div>
+</div>
 
-<pre><%= JSON.pretty_generate(@network_interface.as_json) %></pre>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Raw</h4>
+  </div>
+
+  <pre><%= JSON.pretty_generate(@network_interface.as_json) %></pre>
+</div>

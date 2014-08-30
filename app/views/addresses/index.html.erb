@@ -1,34 +1,34 @@
-<h2>Addresses</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "addresses", region_addresses_path(@region) %>
 </div>
 
-<table class="table" id="addresses">
-  <thead>
-    <tr>
-      <th>public_ip</th>
-      <th>domain</th>
-      <th>allocation_id</th>
-      <th>instance_id</th>
-      <th>private_ip_address</th>
-      <th>association_id</th>
-      <th>network_interface_id</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @addresses.each do |address| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Addresses</h4>
+  </div>
+
+  <table class="table" id="addresses">
+    <thead>
       <tr>
-        <td><%= address_link(@region, address.public_ip) %></td>
-        <td><%= address.domain %></td>
-        <td><%= address.allocation_id %></td>
-        <td><%= instance_link(@region, address.instance) %></td>
-        <td><%= address.private_ip_address %></td>
-        <td><%= address.association_id %></td>
-        <td><%= network_interface_link(@region, address.network_interface_id) %></td>
+        <th>name</th>
+        <th>domain</th>
+        <th>instance_id</th>
+        <th>private_ip_address</th>
+        <th>network_interface_id</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address| %>
+        <tr>
+          <td><%= address_link(@region, address.public_ip) %></td>
+          <td><%= address.domain %></td>
+          <td><%= instance_link(@region, address.instance) %></td>
+          <td><%= address.private_ip_address %></td>
+          <td><%= network_interface_link(@region, address.network_interface_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -37,11 +37,11 @@ module AwsHelper
 
   def instance_state(state)
     if state[:name] == "running"
-      content_tag(:span, "#{state[:name]} (#{state[:code]})", class: 'label label-success')
+      content_tag(:span, state[:name], class: 'label label-success')
     elsif state[:name] == "terminated"
-      content_tag(:span, "#{state[:name]} (#{state[:code]})", class: 'label label-danger')
+      content_tag(:span, state[:name], class: 'label label-danger')
     elsif state[:name] == "stopped"
-      content_tag(:span, "#{state[:name]} (#{state[:code]})", class: 'label label-default')
+      content_tag(:span, state[:name], class: 'label label-default')
     else
       state
     end
@@ -86,7 +86,7 @@ module AwsHelper
       passed += 1 if check[:status] == "passed"
     end
 
-    result = "#{passed}/#{count} checks are passing"
+    result = "#{passed}/#{count} passing"
 
     if count == passed
       content_tag(:span, result, class: 'label label-success')

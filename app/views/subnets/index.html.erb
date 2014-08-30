@@ -1,30 +1,34 @@
-<h2>Subnets</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "subnets", region_subnets_path(@region) %>
 </div>
 
-<table class="table" id="subnets">
-  <thead>
-    <tr>
-      <th>subnet</th>
-      <th>vpc</th>
-      <th>cidr_block</th>
-      <th>availability_zone</th>
-      <th>state</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @subnets.each do |subnet| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Subnets</h4>
+  </div>
+
+  <table class="table" id="subnets">
+    <thead>
       <tr>
-        <td><%= subnet_link(@region, subnet) %></td>
-        <td><%= vpc_link(@region, subnet.vpc) %></td>
-        <td><%= subnet.cidr_block %></td>
-        <td><%= subnet.availability_zone %></td>
-        <td><%= subnet_state(subnet.state) %></td>
+        <th>name</th>
+        <th>vpc</th>
+        <th>cidr_block</th>
+        <th>availability_zone</th>
+        <th>state</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @subnets.each do |subnet| %>
+        <tr>
+          <td><%= subnet_link(@region, subnet) %></td>
+          <td><%= vpc_link(@region, subnet.vpc) %></td>
+          <td><%= subnet.cidr_block %></td>
+          <td><%= subnet.availability_zone %></td>
+          <td><%= subnet_state(subnet.state) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

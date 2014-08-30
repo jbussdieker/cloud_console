@@ -1,25 +1,35 @@
-<h2>Images</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "images", region_images_path(@region) %> /
-  <%= image_link(@region, @image.id) %>
+  <%= image_link(@region, @image) %>
 </div>
 
-<h4>Details</h4>
+<h2><%= @image %></h2>
 
-<dl class="dl-horizontal">
-  <dt>state:</dt>
-  <dd><%= image_state(@image.image_state) %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Details</h4>
+  </div>
 
-  <dt>name:</dt>
-  <dd><%= @image.name %></dd>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>state:</dt>
+      <dd><%= image_state(@image.image_state) %></dd>
 
-  <dt>description:</dt>
-  <dd><%= @image.description %></dd>
-</dl>
+      <dt>name:</dt>
+      <dd><%= @image.name %></dd>
 
-<h4>Raw</h4>
+      <dt>description:</dt>
+      <dd><%= @image.description %></dd>
+    </dl>
+  </div>
+</div>
 
-<pre><%= JSON.pretty_generate(@image.as_json) %></pre>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Raw</h4>
+  </div>
+
+  <pre><%= JSON.pretty_generate(@image.as_json) %></pre>
+</div>

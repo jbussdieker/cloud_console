@@ -1,28 +1,32 @@
-<h2>Security Groups</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "security groups", region_security_groups_path(@region) %>
 </div>
 
-<table class="table" id="security_groups">
-  <thead>
-    <tr>
-      <th>name</th>
-      <th>group_id</th>
-      <th>vpc</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @security_groups.each do |security_group| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Security Groups</h4>
+  </div>
+
+  <table class="table" id="security_groups">
+    <thead>
       <tr>
-        <td><%= security_group_link @region, security_group %></td>
-        <td><%= security_group.id %></td>
-        <td><%= vpc_link(@region, security_group.vpc) %></td>
-        <td><%= security_group.group_description %></td>
+        <th>name</th>
+        <th>group_id</th>
+        <th>vpc</th>
+        <th>description</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @security_groups.each do |security_group| %>
+        <tr>
+          <td><%= security_group_link @region, security_group %></td>
+          <td><%= security_group.id %></td>
+          <td><%= vpc_link(@region, security_group.vpc) %></td>
+          <td><%= security_group.group_description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

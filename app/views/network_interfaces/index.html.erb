@@ -1,34 +1,32 @@
-<h2>Network Interfaces</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "network interfaces", region_network_interfaces_path(@region) %>
 </div>
 
-<table class="table" id="network_interfaces">
-  <thead>
-    <tr>
-      <th>network_interface_id</th>
-      <th>instance</th>
-      <th>mac_address</th>
-      <th>availability_zone</th>
-      <th>source_dest_check</th>
-      <th>description</th>
-      <th>status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @network_interfaces.each do |network_interface| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Network Interfaces</h4>
+  </div>
+
+  <table class="table" id="network_interfaces">
+    <thead>
       <tr>
-        <td><%= network_interface_link(@region, network_interface) %></td>
-        <td><%= instance_link(@region, network_interface.instance) %></td>
-        <td><%= network_interface.mac_address %></td>
-        <td><%= network_interface.availability_zone %></td>
-        <td><%= network_interface.source_dest_check %></td>
-        <td><%= network_interface.description %></td>
-        <td><%= network_interface_status(network_interface.status) %></td>
+        <th>name</th>
+        <th>instance</th>
+        <th>availability_zone</th>
+        <th>status</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @network_interfaces.each do |network_interface| %>
+        <tr>
+          <td><%= network_interface_link(@region, network_interface) %></td>
+          <td><%= instance_link(@region, network_interface.instance) %></td>
+          <td><%= network_interface.availability_zone %></td>
+          <td><%= network_interface_status(network_interface.status) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

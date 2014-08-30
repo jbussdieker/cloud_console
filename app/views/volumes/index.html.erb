@@ -1,28 +1,32 @@
-<h2>Volumes</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "volumes", region_volumes_path(@region) %>
 </div>
 
-<table class="table" id="volumes">
-  <thead>
-    <tr>
-      <th>volume</th>
-      <th>availability_zone</th>
-      <th>size</th>
-      <th>status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @volumes.each do |volume| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Volumes</h4>
+  </div>
+
+  <table class="table" id="volumes">
+    <thead>
       <tr>
-        <td><%= volume_link(@region, volume) %></td>
-        <td><%= volume.availability_zone %></td>
-        <td><%= volume.size %></td>
-        <td><%= volume_status(volume.status) %></td>
+        <th>name</th>
+        <th>availability_zone</th>
+        <th>size</th>
+        <th>status</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @volumes.each do |volume| %>
+        <tr>
+          <td><%= volume_link(@region, volume) %></td>
+          <td><%= volume.availability_zone %></td>
+          <td><%= volume.size %></td>
+          <td><%= volume_status(volume.status) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

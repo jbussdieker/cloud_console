@@ -1,34 +1,34 @@
-<h2>Instances</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "instances", region_instances_path(@region) %>
 </div>
 
-<table class="table" id="instances">
-  <thead>
-    <tr>
-      <th>instance</th>
-      <th>image_id</th>
-      <th>type</th>
-      <th>vpc</th>
-      <th>subnet</th>
-      <th>health</th>
-      <th>state</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @instances.each do |instance| %>
-      <tr class="<%= "danger" if instance.instance_status && instance.instance_status.events_set.length > 0 %>">
-        <td><%= instance_link(@region, instance) %></td>
-        <td><%= image_link(@region, instance.image_id) %></td>
-        <td><%= instance.instance_type %></td>
-        <td><%= vpc_link(@region, instance.vpc) %></td>
-        <td><%= subnet_link(@region, instance.subnet) %></td>
-        <td><%= instance_status(instance.instance_status) %></td>
-        <td><%= instance_state(instance.instance_state) %></td>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Instances</h4>
+  </div>
+
+  <table class="table" id="instances">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>vpc</th>
+        <th>health</th>
+        <th>state</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @instances.each do |instance| %>
+        <tr class="<%= "danger" if instance.instance_status && instance.instance_status.events_set.length > 0 %>">
+          <td><%= instance_link(@region, instance) %></td>
+          <td><%= instance.instance_type %></td>
+          <td><%= vpc_link(@region, instance.vpc) %></td>
+          <td><%= instance_status(instance.instance_status) %></td>
+          <td><%= instance_state(instance.instance_state) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

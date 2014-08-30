@@ -1,5 +1,3 @@
-<h2>Security Groups</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
@@ -7,27 +5,45 @@
   <%= security_group_link(@region, @security_group) %>
 </div>
 
-<h4>Details</h4>
+<h2><%= @security_group %></h2>
 
-<dl class="dl-horizontal">
-  <dt>vpc:</dt>
-  <dd><%= vpc_link(@region, @security_group.vpc) %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Details</h4>
+  </div>
 
-  <dt>group_name:</dt>
-  <dd><%= @security_group.group_name %></dd>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>vpc:</dt>
+      <dd><%= vpc_link(@region, @security_group.vpc) %></dd>
 
-  <dt>group_description:</dt>
-  <dd><%= @security_group.group_description %></dd>
-</dl>
+      <dt>group_name:</dt>
+      <dd><%= @security_group.group_name %></dd>
 
-<h4>Instances</h4>
+      <dt>group_description:</dt>
+      <dd><%= @security_group.group_description %></dd>
+    </dl>
+  </div>
+</div>
 
-<ul>
-  <% @security_group.instances.sort.each do |instance| %>
-    <li><%= instance_link(@region, instance) %></li>
-  <% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Instances</h4>
+  </div>
 
-<h4>Raw</h4>
+  <div class="panel-body">
+    <ul>
+      <% @security_group.instances.sort.each do |instance| %>
+        <li><%= instance_link(@region, instance) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<pre><%= JSON.pretty_generate(@security_group.as_json) %></pre>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Raw</h4>
+  </div>
+
+  <pre><%= JSON.pretty_generate(@security_group.as_json) %></pre>
+</div>

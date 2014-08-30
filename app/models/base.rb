@@ -10,7 +10,9 @@ class Base
   end
 
   def name
-    if respond_to? :[]
+    if instance_variable_defined? :@name
+      instance_variable_get :@name
+    elsif respond_to? :[]
       self["Name"] || id
     else
       id

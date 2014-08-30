@@ -1,28 +1,41 @@
-<h2>Regions</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %>
 </div>
 
-<p>
-  <b>name: </b><%= @region.name %>
-</p>
+<h2><%= @region %></h2>
 
-<p>
-  <b>region_endpoint: </b><%= @region.region_endpoint %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Details</h4>
+  </div>
 
-<p>
-  <b>links: </b>
-  <ul>
-    <li><%= link_to "VPCs", region_vpcs_path(@region) %></li>
-    <li><%= link_to "Subnets", region_subnets_path(@region) %></li>
-    <li><%= link_to "Instances", region_instances_path(@region) %></li>
-    <li><%= link_to "Images", region_images_path(@region) %></li>
-    <li><%= link_to "Volumes", region_volumes_path(@region) %></li>
-    <li><%= link_to "Security Groups", region_security_groups_path(@region) %></li>
-    <li><%= link_to "Addresses", region_addresses_path(@region) %></li>
-    <li><%= link_to "Network Interfaces", region_network_interfaces_path(@region) %></li>
-  </ul>
-</p>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>region_name: </dt>
+      <dd><%= @region.region_name %></dd>
+
+      <dt>region_endpoint: </dt>
+      <dd><%= @region.region_endpoint %></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>
+  </div>
+
+  <div class="panel-body">
+    <ul>
+      <li><%= link_to "VPCs", region_vpcs_path(@region) %></li>
+      <li><%= link_to "Subnets", region_subnets_path(@region) %></li>
+      <li><%= link_to "Instances", region_instances_path(@region) %></li>
+      <li><%= link_to "Images", region_images_path(@region) %></li>
+      <li><%= link_to "Volumes", region_volumes_path(@region) %></li>
+      <li><%= link_to "Security Groups", region_security_groups_path(@region) %></li>
+      <li><%= link_to "Addresses", region_addresses_path(@region) %></li>
+      <li><%= link_to "Network Interfaces", region_network_interfaces_path(@region) %></li>
+    </ul>
+  </div>
+</div>

@@ -1,5 +1,3 @@
-<h2>Volumes</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
@@ -7,40 +5,58 @@
   <%= volume_link(@region, @volume) %>
 </div>
 
-<h4>Details</h4>
+<h2><%= @volume %></h2>
 
-<dl class="dl-horizontal">
-  <dt>status:</dt>
-  <dd><%= volume_status(@volume.status) %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Details</h4>
+  </div>
 
-  <dt>availability_zone:</dt>
-  <dd><%= @volume.availability_zone %></dd>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>status:</dt>
+      <dd><%= volume_status(@volume.status) %></dd>
 
-  <dt>size:</dt>
-  <dd><%= @volume.size %></dd>
-</dl>
+      <dt>availability_zone:</dt>
+      <dd><%= @volume.availability_zone %></dd>
 
-<h4>Attachments</h4>
+      <dt>size:</dt>
+      <dd><%= @volume.size %></dd>
+    </dl>
+  </div>
+</div>
 
-<% @volume.attachments.each do |attachment| %>
-  <dl class="dl-horizontal">
-    <dt>instance:</dt>
-    <dd><%= instance_link(@region, attachment.instance) %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Attachments</h4>
+  </div>
 
-    <dt>device:</dt>
-    <dd><%= attachment.device %></dd>
+  <div class="panel-body">
+    <% @volume.attachments.each do |attachment| %>
+      <dl class="dl-horizontal">
+        <dt>instance:</dt>
+        <dd><%= instance_link(@region, attachment.instance) %></dd>
 
-    <dt>status:</dt>
-    <dd><%= attachment_status(attachment.status) %></dd>
+        <dt>device:</dt>
+        <dd><%= attachment.device %></dd>
 
-    <dt>attach_time:</dt>
-    <dd><%= attachment.attach_time %></dd>
+        <dt>status:</dt>
+        <dd><%= attachment_status(attachment.status) %></dd>
 
-    <dt>delete_on_termination:</dt>
-    <dd><%= attachment.delete_on_termination %></dd>
-  </dl>
-<% end %>
+        <dt>attach_time:</dt>
+        <dd><%= attachment.attach_time %></dd>
 
-<h4>Raw</h4>
+        <dt>delete_on_termination:</dt>
+        <dd><%= attachment.delete_on_termination %></dd>
+      </dl>
+    <% end %>
+  </div>
+</div>
 
-<pre><%= JSON.pretty_generate(@volume.as_json) %></pre>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Raw</h4>
+  </div>
+
+  <pre><%= JSON.pretty_generate(@volume.as_json) %></pre>
+</div>

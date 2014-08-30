@@ -1,5 +1,3 @@
-<h2>VPC</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
@@ -7,49 +5,79 @@
   <%= vpc_link(@region, @vpc) %>
 </div>
 
-<h4>Details</h4>
+<h2><%= @vpc %></h2>
 
-<dl class="dl-horizontal">
-    <dt>state:</dt>
-    <dd><%= vpc_state(@vpc.state) %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Details</h4>
+  </div>
 
-    <dt>cidr_block:</dt>
-    <dd><%= @vpc.cidr_block %></dd>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+        <dt>state:</dt>
+        <dd><%= vpc_state(@vpc.state) %></dd>
 
-    <dt>dhcp_options_id:</dt>
-    <dd><%= @vpc.dhcp_options_id %></dd>
+        <dt>cidr_block:</dt>
+        <dd><%= @vpc.cidr_block %></dd>
 
-    <dt>instance_tenancy:</dt>
-    <dd><%= @vpc.instance_tenancy %></dd>
+        <dt>dhcp_options_id:</dt>
+        <dd><%= @vpc.dhcp_options_id %></dd>
 
-    <dt>is_default:</dt>
-    <dd><%= @vpc.is_default %></dd>
-</dl>
+        <dt>instance_tenancy:</dt>
+        <dd><%= @vpc.instance_tenancy %></dd>
 
-<h4>Subnets</h4>
+        <dt>is_default:</dt>
+        <dd><%= @vpc.is_default %></dd>
+    </dl>
+  </div>
+</div>
 
-<ul>
-  <% @vpc.subnets.sort.each do |subnet| %>
-    <li><%= subnet_link(@region, subnet) %></li>
-  <% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Subnets</h4>
+  </div>
 
-<h4>Instances</h4>
+  <div class="panel-body">
+    <ul>
+      <% @vpc.subnets.sort.each do |subnet| %>
+        <li><%= subnet_link(@region, subnet) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<ul>
-  <% @vpc.instances.sort.each do |instance| %>
-    <li><%= instance_link(@region, instance) %></li>
-  <% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Instances</h4>
+  </div>
 
-<h4>Security Groups</h4>
+  <div class="panel-body">
+    <ul>
+      <% @vpc.instances.sort.each do |instance| %>
+        <li><%= instance_link(@region, instance) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<ul>
-  <% @vpc.groups.sort.each do |group| %>
-    <li><%= security_group_link(@region, group) %></li>
-  <% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Security Groups</h4>
+  </div>
 
-<h4>Raw</h4>
+  <div class="panel-body">
+    <ul>
+      <% @vpc.groups.sort.each do |group| %>
+        <li><%= security_group_link(@region, group) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<pre><%= JSON.pretty_generate(@vpc.as_json) %></pre>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Raw</h4>
+  </div>
+
+  <pre><%= JSON.pretty_generate(@vpc.as_json) %></pre>
+</div>

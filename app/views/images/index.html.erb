@@ -1,26 +1,30 @@
-<h2>Images</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %> /
   <%= region_link(@region) %> /
   <%= link_to "images", region_images_path(@region) %>
 </div>
 
-<table class="table" id="images">
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>image_id</th>
-      <th>state</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @images.each do |image| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Images</h4>
+  </div>
+
+  <table class="table" id="images">
+    <thead>
       <tr>
-        <td><%= image_link(@region, image) %></td>
-        <td><%= image.image_id %></td>
-        <td><%= image_state(image.image_state) %></td>
+        <th>name</th>
+        <th>image_id</th>
+        <th>state</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @images.each do |image| %>
+        <tr>
+          <td><%= image_link(@region, image) %></td>
+          <td><%= image.image_id %></td>
+          <td><%= image_state(image.image_state) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

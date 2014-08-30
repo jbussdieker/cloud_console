@@ -1,11 +1,17 @@
-<h2>Regions</h2>
-
 <div class="breadcrumb">
   <%= link_to "regions", regions_path %>
 </div>
 
-<ul id="regions">
-<% @regions.each do |region| %>
-  <li><%= region_link(region) %></li>
-<% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">Regions</h4>
+  </div>
+
+  <div class="panel-body">
+    <ul id="regions">
+    <% @regions.each do |region| %>
+      <li><%= region_link(region) %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
