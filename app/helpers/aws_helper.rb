@@ -12,7 +12,11 @@ module AwsHelper
   end
 
   def image_link(region, image)
-    link_to image, region_image_path(region, image) if image
+    if image.is_a?(String) && image_obj = region.images.find(image)
+      link_to image_obj, region_image_path(region, image_obj)
+    else
+      link_to image, region_image_path(region, image)
+    end
   end
 
   def subnet_link(region, subnet)
