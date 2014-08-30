@@ -53,10 +53,6 @@ class Base
     def fetch_data
       klass.describe(params)
     end
-
-    def client
-      AWS::EC2.new(params).client
-    end
   end
 
   def initialize(data = {})
@@ -138,8 +134,16 @@ class Base
     @describe_result_key ||= "#{name.underscore}_set"
   end
 
-  def self.describe(params, args = {})
-    result = client(params).send(describe_function, args)
+  def self.describe_args
+    @describe_args ||= {}
+  end
+
+  def self.describe_args=(value)
+    @describe_args = value
+  end
+
+  def self.describe(params)
+    result = client(params).send(describe_function, describe_args)
     result.data[describe_result_key.to_sym].collect do |obj|
       new(obj.merge(params))
     end
