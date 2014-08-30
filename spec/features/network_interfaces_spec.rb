@@ -8,7 +8,7 @@ describe "network_interfaces" do
 
         if count > 0
           it "shows network interface" do
-            visit region_network_interfaces_path(region, region.network_interfaces.first)
+            visit region_network_interface_path(region, region.network_interfaces.first)
             expect(page).to have_content 'Network Interfaces'
           end
         end

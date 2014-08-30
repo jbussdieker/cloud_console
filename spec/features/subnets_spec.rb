@@ -8,7 +8,7 @@ describe "subnets" do
 
         if count > 0
           it "shows subnet" do
-            visit region_subnets_path(region, region.subnets.first)
+            visit region_subnet_path(region, region.subnets.first)
             expect(page).to have_content 'Subnets'
           end
         end

@@ -8,7 +8,7 @@ describe "images" do
 
         if count > 0
           it "shows image" do
-            visit region_images_path(region, region.images.first)
+            visit region_image_path(region, region.images.first)
             expect(page).to have_content 'Images'
           end
         end

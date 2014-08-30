@@ -8,7 +8,7 @@ describe "vpcs" do
 
         if count > 0
           it "shows vpc" do
-            visit region_vpcs_path(region, region.vpcs.first)
+            visit region_vpc_path(region, region.vpcs.first)
             expect(page).to have_content 'VPCs'
           end
         end

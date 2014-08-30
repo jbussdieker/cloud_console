@@ -8,7 +8,7 @@ describe "security_groups" do
 
         if count > 0
           it "shows security group" do
-            visit region_security_groups_path(region, region.security_groups.first)
+            visit region_security_group_path(region, region.security_groups.first)
             expect(page).to have_content 'Security Groups'
           end
         end

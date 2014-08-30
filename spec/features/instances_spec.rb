@@ -8,7 +8,7 @@ describe "instances" do
 
         if count > 0
           it "shows instance" do
-            visit region_instances_path(region, region.instances.first)
+            visit region_instance_path(region, region.instances.first)
             expect(page).to have_content 'Instances'
           end
         end

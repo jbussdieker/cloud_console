@@ -8,7 +8,7 @@ describe "volumes" do
 
         if count > 0
           it "shows volume" do
-            visit region_volumes_path(region, region.volumes.first)
+            visit region_volume_path(region, region.volumes.first)
             expect(page).to have_content 'Volumes'
           end
         end
